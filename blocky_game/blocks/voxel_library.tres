@@ -13,7 +13,7 @@
 [ext_resource type="ArrayMesh" uid="uid://xue4bt84vwsg" path="res://blocky_game/blocks/stairs/stairs_px.obj" id="9"]
 [ext_resource type="ArrayMesh" uid="uid://b3t5agd28fn0v" path="res://blocky_game/blocks/stairs/stairs_pz.obj" id="10"]
 [ext_resource type="ArrayMesh" uid="uid://c2hopote1vb14" path="res://blocky_game/blocks/stairs/stairs_nz.obj" id="11"]
-[ext_resource type="ArrayMesh" uid="uid://0i1jxsk65d0u" path="res://blocky_game/blocks/glass/glass.obj" id="12"]
+[ext_resource type="ArrayMesh" uid="uid://fv8g4jnjcj3d" path="res://blocky_game/blocks/glass_v2/glass.obj" id="12"]
 [ext_resource type="ArrayMesh" uid="uid://31q4wrlmcpbj" path="res://blocky_game/blocks/water/water_full.obj" id="13"]
 [ext_resource type="ArrayMesh" uid="uid://c3gahur20k4ev" path="res://blocky_game/blocks/rail/rail_slope_nz.obj" id="15"]
 [ext_resource type="ArrayMesh" uid="uid://csgscqf8ymc12" path="res://blocky_game/blocks/rail/rail_slope_px.obj" id="16"]

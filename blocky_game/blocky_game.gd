@@ -10,10 +10,9 @@ const CharacterScene = preload("./player/character_avatar.tscn")
 const RemoteCharacterScene = preload("./player/remote_character.tscn")
 const RandomTicks = preload("./random_ticks.gd")
 const WaterUpdater = preload("./water.gd")
-const WorldGenerator = preload("./generator/generator.gd")
 
-# Just above max surface height at origin (WorldGenerator.TERRAIN_MAX_Y). Short fall onto ground; farther terrain streams in normally.
-const DEFAULT_SPAWN_POS := Vector3(0, float(WorldGenerator.TERRAIN_MAX_Y) + 3.0, 0)
+# Same as upstream Zylann voxelgame (blocky_game.gd): immediate spawn at this position.
+const DEFAULT_SPAWN_POS := Vector3(0, 64, 0)
 
 @onready var _light : DirectionalLight3D = $DirectionalLight3D
 @onready var _terrain : VoxelTerrain = $VoxelTerrain
@@ -107,7 +106,6 @@ func _ready():
 		# Current code grabs this node by name, so must be named for now...
 		water_updater.name = "Water"
 		add_child(water_updater)
-		
 		_spawn_character(SERVER_PEER_ID, DEFAULT_SPAWN_POS)
 
 

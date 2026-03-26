@@ -105,8 +105,8 @@ func _init():
 	_create_block({
 		"name": "clear_glass",
 		"display_name": "Glass",
-		"directory": "clear_glass",
-		"gui_model": "clear_glass.obj",
+		"directory": "glass_v2",
+		"gui_model": "glass.obj",
 		"rotation_type": ROTATION_TYPE_NONE,
 		"voxels": ["clear_glass"],
 		"transparent": true,
@@ -696,6 +696,9 @@ func _init():
 		"backface_culling": false
 	})
 
+	# Refresh mesher-side data from mesh resources (e.g. after changing OBJ paths in voxel_library.tres).
+	_voxel_library.bake()
+
 
 func get_block(id: int) -> Block:
 	assert(id >= 0)
@@ -777,7 +780,10 @@ func _create_block(params: Dictionary):
 	base_info.backface_culling = params.backface_culling
 	if base_info.directory != "":
 		base_info.gui_model_path = str(ROOT, "/", params.directory, "/", params.gui_model)
-		var sprite_path := str(ROOT, "/", params.directory, "/", params.name, "_sprite.png")
+		var sprite_name := str(params.name, "_sprite.png")
+		if params.has("sprite_file"):
+			sprite_name = params.sprite_file
+		var sprite_path := str(ROOT, "/", params.directory, "/", sprite_name)
 		base_info.sprite_texture = load(sprite_path)
 
 	_blocks.append(block)
