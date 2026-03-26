@@ -15,13 +15,6 @@ const WorldGenerator = preload("./generator/generator.gd")
 # Just above max surface height at origin (WorldGenerator.TERRAIN_MAX_Y). Short fall onto ground; farther terrain streams in normally.
 const DEFAULT_SPAWN_POS := Vector3(0, float(WorldGenerator.TERRAIN_MAX_Y) + 3.0, 0)
 
-# Pre-mesh spawn vicinities before the player camera exists (avoids blue sky where chunks are not ready yet).
-const SPAWN_PRELOAD_VIEW_DISTANCE := 128
-const SPAWN_MESH_HALF_XZ := 72.0
-const SPAWN_MESH_Y_BELOW := 56.0
-const SPAWN_MESH_Y_ABOVE := 32.0
-const SPAWN_MESH_MAX_FRAMES := 1200
-
 @onready var _light : DirectionalLight3D = $DirectionalLight3D
 @onready var _terrain : VoxelTerrain = $VoxelTerrain
 @onready var _characters_container : Node = $Players
@@ -115,67 +108,7 @@ func _ready():
 		water_updater.name = "Water"
 		add_child(water_updater)
 		
-		_begin_host_or_singleplayer.call_deferred()
-
-
-func _begin_host_or_singleplayer() -> void:
-	await _preload_spawn_and_then(
-		DEFAULT_SPAWN_POS,
-		func(): _spawn_character(SERVER_PEER_ID, DEFAULT_SPAWN_POS)
-	)
-
-
-func _spawn_mesh_check_aabb(center: Vector3) -> AABB:
-	var ox := floorf(center.x)
-	var oy := floorf(center.y)
-	var oz := floorf(center.z)
-	return AABB(
-		Vector3(ox - SPAWN_MESH_HALF_XZ, oy - SPAWN_MESH_Y_BELOW, oz - SPAWN_MESH_HALF_XZ),
-		Vector3(
-			SPAWN_MESH_HALF_XZ * 2.0,
-			SPAWN_MESH_Y_BELOW + SPAWN_MESH_Y_ABOVE,
-			SPAWN_MESH_HALF_XZ * 2.0
-		)
-	)
-
-
-func _preload_spawn_and_then(center: Vector3, after: Callable) -> void:
-	# Procedural sky reads as bright blue where nothing is meshed; use a flat earth tone until ready.
-	var we: WorldEnvironment = get_node_or_null("WorldEnvironment") as WorldEnvironment
-	var restore_env: Environment = null
-	if we != null and we.environment != null:
-		restore_env = we.environment
-		var stub: Environment = we.environment.duplicate(true)
-		stub.background_mode = Environment.BG_COLOR
-		stub.background_color = Color(0.34, 0.31, 0.28)
-		we.environment = stub
-
-	var holder := Node3D.new()
-	holder.name = "SpawnTerrainPreloader"
-	holder.position = center
-	var vw := VoxelViewer.new()
-	vw.view_distance = SPAWN_PRELOAD_VIEW_DISTANCE
-	vw.requires_visuals = true
-	vw.requires_collisions = false
-	holder.add_child(vw)
-	add_child(holder)
-
-	var mesh_aabb := _spawn_mesh_check_aabb(center)
-	var meshed := false
-	for _i in SPAWN_MESH_MAX_FRAMES:
-		if _terrain.is_area_meshed(mesh_aabb):
-			meshed = true
-			break
-		await get_tree().process_frame
-
-	if not meshed:
-		_logger.error("Spawn terrain mesh wait timed out; spawning anyway")
-
-	if we != null and restore_env != null:
-		we.environment = restore_env
-
-	after.call()
-	holder.queue_free()
+		_spawn_character(SERVER_PEER_ID, DEFAULT_SPAWN_POS)
 
 
 func _on_connected_to_server():
@@ -299,11 +232,4 @@ func receive_remote_character(peer_id: int, pos: Vector3):
 @rpc("authority", "call_remote", "reliable", 0)
 func receive_own_character(peer_id: int, pos: Vector3):
 	_logger.debug(str("receive_own_character ", peer_id, " at ", pos))
-	_begin_client_owned_character.call_deferred(peer_id, pos)
-
-
-func _begin_client_owned_character(peer_id: int, pos: Vector3) -> void:
-	await _preload_spawn_and_then(
-		pos,
-		func(): _spawn_character(peer_id, pos)
-	)
+	_spawn_character(peer_id, pos)
