@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://bfllvjr635l0x"
+path="res://.godot/imported/prop_chest_shining_green.vox-7c4388922e578f241478e7b06e96bf62.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/chest/prop_chest_shining_green/prop_chest_shining_green.vox"
+dest_files=["res://.godot/imported/prop_chest_shining_green.vox-7c4388922e578f241478e7b06e96bf62.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

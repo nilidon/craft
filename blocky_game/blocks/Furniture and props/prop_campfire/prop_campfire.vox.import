@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://btwjdn0xxvolo"
+path="res://.godot/imported/prop_campfire.vox-ff70244dd975661ffd3204b920d5cd51.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/prop_campfire/prop_campfire.vox"
+dest_files=["res://.godot/imported/prop_campfire.vox-ff70244dd975661ffd3204b920d5cd51.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

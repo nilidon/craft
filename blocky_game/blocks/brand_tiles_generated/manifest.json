@@ -1,0 +1,596 @@
+{
+  "source_atlas": "project/blocky_game/blocks/terrain_grassland_balanced.png",
+  "atlas_size": [
+    256,
+    256
+  ],
+  "tile_size": 16,
+  "grid": [
+    16,
+    16
+  ],
+  "models": {
+    "dead_shrub/dead_shrub.obj": [
+      [
+        5,
+        1
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "dirt/dirt.obj": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "glass/glass.obj": [
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "grass/grass.obj": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "leaves/leaves.obj": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "log/log_x.obj": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "log/log_y.obj": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "log/log_z.obj": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "planks/planks.obj": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "rail/rail_slope_nx.obj": [
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ]
+    ],
+    "rail/rail_slope_nz.obj": [
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ]
+    ],
+    "rail/rail_slope_px.obj": [
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ]
+    ],
+    "rail/rail_slope_pz.obj": [
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ]
+    ],
+    "rail/rail_turn_nx.obj": [
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ]
+    ],
+    "rail/rail_turn_nz.obj": [
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ]
+    ],
+    "rail/rail_turn_px.obj": [
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ]
+    ],
+    "rail/rail_turn_pz.obj": [
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ]
+    ],
+    "rail/rail_x.obj": [
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ]
+    ],
+    "rail/rail_z.obj": [
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        0
+      ]
+    ],
+    "stairs/stairs_nx.obj": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "stairs/stairs_nz.obj": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "stairs/stairs_px.obj": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "stairs/stairs_pz.obj": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "tall_grass/tall_grass.obj": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "water/water_full.obj": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "water/water_top.obj": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ]
+    ]
+  },
+  "unique_cells": [
+    {
+      "cell": [
+        0,
+        0
+      ],
+      "used_by": [
+        "dirt/dirt.obj",
+        "grass/grass.obj"
+      ]
+    },
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "used_by": [
+        "grass/grass.obj",
+        "leaves/leaves.obj",
+        "tall_grass/tall_grass.obj"
+      ]
+    },
+    {
+      "cell": [
+        0,
+        2
+      ],
+      "used_by": [
+        "leaves/leaves.obj"
+      ]
+    },
+    {
+      "cell": [
+        1,
+        0
+      ],
+      "used_by": [
+        "dirt/dirt.obj",
+        "grass/grass.obj",
+        "log/log_x.obj",
+        "log/log_y.obj",
+        "log/log_z.obj",
+        "water/water_full.obj",
+        "water/water_top.obj"
+      ]
+    },
+    {
+      "cell": [
+        1,
+        1
+      ],
+      "used_by": [
+        "tall_grass/tall_grass.obj",
+        "water/water_full.obj",
+        "water/water_top.obj"
+      ]
+    },
+    {
+      "cell": [
+        2,
+        0
+      ],
+      "used_by": [
+        "log/log_x.obj",
+        "log/log_y.obj",
+        "log/log_z.obj",
+        "planks/planks.obj",
+        "stairs/stairs_nx.obj",
+        "stairs/stairs_nz.obj",
+        "stairs/stairs_px.obj",
+        "stairs/stairs_pz.obj",
+        "water/water_full.obj",
+        "water/water_top.obj"
+      ]
+    },
+    {
+      "cell": [
+        2,
+        1
+      ],
+      "used_by": [
+        "planks/planks.obj",
+        "stairs/stairs_nx.obj",
+        "stairs/stairs_nz.obj",
+        "stairs/stairs_px.obj",
+        "stairs/stairs_pz.obj",
+        "water/water_full.obj",
+        "water/water_top.obj"
+      ]
+    },
+    {
+      "cell": [
+        3,
+        0
+      ],
+      "used_by": [
+        "glass/glass.obj",
+        "log/log_x.obj",
+        "log/log_y.obj",
+        "log/log_z.obj",
+        "planks/planks.obj",
+        "stairs/stairs_nx.obj",
+        "stairs/stairs_nz.obj",
+        "stairs/stairs_px.obj",
+        "stairs/stairs_pz.obj"
+      ]
+    },
+    {
+      "cell": [
+        3,
+        1
+      ],
+      "used_by": [
+        "planks/planks.obj",
+        "stairs/stairs_nx.obj",
+        "stairs/stairs_nz.obj",
+        "stairs/stairs_px.obj",
+        "stairs/stairs_pz.obj"
+      ]
+    },
+    {
+      "cell": [
+        4,
+        0
+      ],
+      "used_by": [
+        "glass/glass.obj",
+        "planks/planks.obj",
+        "stairs/stairs_nx.obj",
+        "stairs/stairs_nz.obj",
+        "stairs/stairs_px.obj",
+        "stairs/stairs_pz.obj"
+      ]
+    },
+    {
+      "cell": [
+        4,
+        1
+      ],
+      "used_by": [
+        "planks/planks.obj",
+        "stairs/stairs_nx.obj",
+        "stairs/stairs_nz.obj",
+        "stairs/stairs_px.obj",
+        "stairs/stairs_pz.obj"
+      ]
+    },
+    {
+      "cell": [
+        5,
+        0
+      ],
+      "used_by": [
+        "rail/rail_slope_nx.obj",
+        "rail/rail_slope_nz.obj",
+        "rail/rail_slope_px.obj",
+        "rail/rail_slope_pz.obj",
+        "rail/rail_x.obj",
+        "rail/rail_z.obj"
+      ]
+    },
+    {
+      "cell": [
+        5,
+        1
+      ],
+      "used_by": [
+        "dead_shrub/dead_shrub.obj"
+      ]
+    },
+    {
+      "cell": [
+        6,
+        0
+      ],
+      "used_by": [
+        "rail/rail_slope_nx.obj",
+        "rail/rail_slope_nz.obj",
+        "rail/rail_slope_px.obj",
+        "rail/rail_slope_pz.obj",
+        "rail/rail_turn_nx.obj",
+        "rail/rail_turn_nz.obj",
+        "rail/rail_turn_px.obj",
+        "rail/rail_turn_pz.obj",
+        "rail/rail_x.obj",
+        "rail/rail_z.obj"
+      ]
+    },
+    {
+      "cell": [
+        6,
+        1
+      ],
+      "used_by": [
+        "dead_shrub/dead_shrub.obj"
+      ]
+    },
+    {
+      "cell": [
+        7,
+        0
+      ],
+      "used_by": [
+        "rail/rail_turn_nx.obj",
+        "rail/rail_turn_nz.obj",
+        "rail/rail_turn_px.obj",
+        "rail/rail_turn_pz.obj"
+      ]
+    }
+  ]
+}

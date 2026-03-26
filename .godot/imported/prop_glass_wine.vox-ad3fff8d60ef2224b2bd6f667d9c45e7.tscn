@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_glass_wine.vox-ad3fff8d60ef2224b2bd6f667d9c45e7.model0.mesh" id="1_51th0"]
+
+[node name="prop_glass_wine" type="Node3D"]
+
+[node name="@MeshInstance3D@26032" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
+gi_mode = 2
+mesh = ExtResource("1_51th0")

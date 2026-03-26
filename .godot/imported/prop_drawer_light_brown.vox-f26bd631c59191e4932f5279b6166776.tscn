@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_drawer_light_brown.vox-f26bd631c59191e4932f5279b6166776.model0.mesh" id="1_dc284"]
+
+[node name="prop_drawer_light_brown" type="Node3D"]
+
+[node name="@MeshInstance3D@24150" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -10)
+gi_mode = 2
+mesh = ExtResource("1_dc284")

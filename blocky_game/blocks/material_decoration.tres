@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cegunq7iv0hub"]
+
+[ext_resource type="Texture2D" uid="uid://br26jbp7l2lcj" path="res://blocky_game/blocks/decoration/Texture/texture.png" id="1"]
+
+[resource]
+albedo_texture = ExtResource("1")
+metallic_specular = 0.0
+texture_filter = 1

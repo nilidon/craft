@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_glass_water.vox-c6deab2f483913a86dda29dca1dbb6c4.model0.mesh" id="1_gqkcj"]
+
+[node name="prop_glass_water" type="Node3D"]
+
+[node name="@MeshInstance3D@26018" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+gi_mode = 2
+mesh = ExtResource("1_gqkcj")

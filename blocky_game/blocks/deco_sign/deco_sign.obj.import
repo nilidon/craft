@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bw8ior1u5uqic"
+path="res://.godot/imported/deco_sign.obj-1abc4e2e23a1de579515332217e11960.mesh"
+
+[deps]
+
+files=["res://.godot/imported/deco_sign.obj-1abc4e2e23a1de579515332217e11960.mesh"]
+
+source_file="res://blocky_game/blocks/deco_sign/deco_sign.obj"
+dest_files=["res://.godot/imported/deco_sign.obj-1abc4e2e23a1de579515332217e11960.mesh", "res://.godot/imported/deco_sign.obj-1abc4e2e23a1de579515332217e11960.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

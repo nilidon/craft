@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_oven_glassless.vox-d1761abaf262669656cfe2e18234457c.model0.mesh" id="1_6uido"]
+
+[node name="prop_oven_glassless" type="Node3D"]
+
+[node name="@MeshInstance3D@24156" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -10)
+gi_mode = 2
+mesh = ExtResource("1_6uido")

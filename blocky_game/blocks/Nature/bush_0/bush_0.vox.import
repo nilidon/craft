@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://dki8ulxyc5lsw"
+path="res://.godot/imported/bush_0.vox-7afcc88cdcaa5b060e9440c3bffda7ce.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Nature/bush_0/bush_0.vox"
+dest_files=["res://.godot/imported/bush_0.vox-7afcc88cdcaa5b060e9440c3bffda7ce.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

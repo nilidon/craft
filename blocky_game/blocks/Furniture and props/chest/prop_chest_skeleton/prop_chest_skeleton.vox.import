@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://dgwftxc758wvy"
+path="res://.godot/imported/prop_chest_skeleton.vox-d3adbdcb59d40d65655378fc05c702cf.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/chest/prop_chest_skeleton/prop_chest_skeleton.vox"
+dest_files=["res://.godot/imported/prop_chest_skeleton.vox-d3adbdcb59d40d65655378fc05c702cf.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

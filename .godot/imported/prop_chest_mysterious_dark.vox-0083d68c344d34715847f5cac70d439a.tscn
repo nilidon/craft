@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_chest_mysterious_dark.vox-0083d68c344d34715847f5cac70d439a.model0.mesh" id="1_orapy"]
+
+[node name="prop_chest_mysterious_dark" type="Node3D"]
+
+[node name="@MeshInstance3D@26066" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -9)
+gi_mode = 2
+mesh = ExtResource("1_orapy")

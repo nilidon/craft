@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://bd1n3dt3l7567"
+path="res://.godot/imported/fence_pole.vox-e4d426b978f1de075b24af400e6abf8e.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/fence/fence_pole/fence_pole.vox"
+dest_files=["res://.godot/imported/fence_pole.vox-e4d426b978f1de075b24af400e6abf8e.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

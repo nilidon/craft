@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dqm1amorsb2on"
+path="res://.godot/imported/prop_chair_dark_brown_pz.obj-5e9d5c546027abb2e03a0ed8d782c07c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/prop_chair_dark_brown_pz.obj-5e9d5c546027abb2e03a0ed8d782c07c.mesh"]
+
+source_file="res://blocky_game/blocks/prop_chair_dark_brown/prop_chair_dark_brown_pz.obj"
+dest_files=["res://.godot/imported/prop_chair_dark_brown_pz.obj-5e9d5c546027abb2e03a0ed8d782c07c.mesh", "res://.godot/imported/prop_chair_dark_brown_pz.obj-5e9d5c546027abb2e03a0ed8d782c07c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

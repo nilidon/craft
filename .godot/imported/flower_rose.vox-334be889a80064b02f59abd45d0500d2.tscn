@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/flower_rose.vox-334be889a80064b02f59abd45d0500d2.model0.mesh" id="1_lmw4k"]
+
+[node name="flower_rose" type="Node3D"]
+
+[node name="@MeshInstance3D@25356" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+gi_mode = 2
+mesh = ExtResource("1_lmw4k")

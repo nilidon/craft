@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://luom2lx3tvts"
+path="res://.godot/imported/trunk_0.vox-b28e3772ecc3fc5c85ba2296797f4036.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Nature/trunks/trunk_0/trunk_0.vox"
+dest_files=["res://.godot/imported/trunk_0.vox-b28e3772ecc3fc5c85ba2296797f4036.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

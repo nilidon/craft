@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://c4tj3wqw1owny"
+path="res://.godot/imported/prop_mug.vox-502322dc266e38969f05c5a557c9d872.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/prop_mug/prop_mug.vox"
+dest_files=["res://.godot/imported/prop_mug.vox-502322dc266e38969f05c5a557c9d872.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

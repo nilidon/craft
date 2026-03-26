@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm2v4asqyh6a"]
+
+[sub_resource type="BoxMesh" id="head"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="BoxMesh" id="body"]
+size = Vector3(0.5, 0.6, 0.25)
+
+[sub_resource type="BoxMesh" id="arm"]
+size = Vector3(0.15, 0.55, 0.2)
+
+[sub_resource type="BoxMesh" id="leg"]
+size = Vector3(0.2, 0.6, 0.22)
+
+[node name="CharacterVisual" type="Node3D"]
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+cast_shadow = 3
+mesh = SubResource("head")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+cast_shadow = 3
+mesh = SubResource("body")
+
+[node name="ArmLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.325, 0.075, 0)
+cast_shadow = 3
+mesh = SubResource("arm")
+
+[node name="ArmRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325, 0.075, 0)
+cast_shadow = 3
+mesh = SubResource("arm")
+
+[node name="LegLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, -0.5, 0)
+cast_shadow = 3
+mesh = SubResource("leg")
+
+[node name="LegRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, -0.5, 0)
+cast_shadow = 3
+mesh = SubResource("leg")

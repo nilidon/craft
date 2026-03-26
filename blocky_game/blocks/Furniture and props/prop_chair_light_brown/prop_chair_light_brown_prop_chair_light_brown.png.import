@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://0qw4jde4tyhl"
+path.s3tc="res://.godot/imported/prop_chair_light_brown_prop_chair_light_brown.png-e525042b1eae7dc327f0f29031e06542.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "187549106e8f4a3b0d40b4caaf2101a0"
+}
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/prop_chair_light_brown/prop_chair_light_brown_prop_chair_light_brown.png"
+dest_files=["res://.godot/imported/prop_chair_light_brown_prop_chair_light_brown.png-e525042b1eae7dc327f0f29031e06542.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_chair_light_brown.vox-a7928653561602bdbefe23eae65422a1.model0.mesh" id="1_gfel5"]
+
+[node name="prop_chair_light_brown" type="Node3D"]
+
+[node name="@MeshInstance3D@24158" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+gi_mode = 2
+mesh = ExtResource("1_gfel5")

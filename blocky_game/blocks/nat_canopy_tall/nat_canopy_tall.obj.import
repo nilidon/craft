@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cmmak21cnja4b"
+path="res://.godot/imported/nat_canopy_tall.obj-cb2f9b545d0cdf1df85806fe189f83ae.mesh"
+
+[deps]
+
+files=["res://.godot/imported/nat_canopy_tall.obj-cb2f9b545d0cdf1df85806fe189f83ae.mesh"]
+
+source_file="res://blocky_game/blocks/nat_canopy_tall/nat_canopy_tall.obj"
+dest_files=["res://.godot/imported/nat_canopy_tall.obj-cb2f9b545d0cdf1df85806fe189f83ae.mesh", "res://.godot/imported/nat_canopy_tall.obj-cb2f9b545d0cdf1df85806fe189f83ae.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bqtt1g5phd4cj"
+path="res://.godot/imported/prop_table_light_brown_nx.obj-bc566fdda4a80aafbd65fa2b09f1d658.mesh"
+
+[deps]
+
+files=["res://.godot/imported/prop_table_light_brown_nx.obj-bc566fdda4a80aafbd65fa2b09f1d658.mesh"]
+
+source_file="res://blocky_game/blocks/prop_table_light_brown/prop_table_light_brown_nx.obj"
+dest_files=["res://.godot/imported/prop_table_light_brown_nx.obj-bc566fdda4a80aafbd65fa2b09f1d658.mesh", "res://.godot/imported/prop_table_light_brown_nx.obj-bc566fdda4a80aafbd65fa2b09f1d658.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

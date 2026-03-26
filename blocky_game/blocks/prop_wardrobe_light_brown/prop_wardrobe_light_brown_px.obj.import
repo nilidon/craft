@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dtsmelnm0artr"
+path="res://.godot/imported/prop_wardrobe_light_brown_px.obj-414c5e4e4e06d19589e0e10e961538a0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/prop_wardrobe_light_brown_px.obj-414c5e4e4e06d19589e0e10e961538a0.mesh"]
+
+source_file="res://blocky_game/blocks/prop_wardrobe_light_brown/prop_wardrobe_light_brown_px.obj"
+dest_files=["res://.godot/imported/prop_wardrobe_light_brown_px.obj-414c5e4e4e06d19589e0e10e961538a0.mesh", "res://.godot/imported/prop_wardrobe_light_brown_px.obj-414c5e4e4e06d19589e0e10e961538a0.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

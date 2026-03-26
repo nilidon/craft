@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://gxienu7c8l2j"
+path="res://.godot/imported/prop_chair_dark_brown.vox-f1b81b45fdf7238d0f3c21274cd8a846.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/prop_chair_dark_brown/prop_chair_dark_brown.vox"
+dest_files=["res://.godot/imported/prop_chair_dark_brown.vox-f1b81b45fdf7238d0f3c21274cd8a846.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

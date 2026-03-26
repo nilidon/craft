@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/canopy_0.vox-38e8a83c6f7d7ac6607a58b0521a0992.model0.mesh" id="1_1ky4i"]
+
+[node name="canopy_0" type="Node3D"]
+
+[node name="@MeshInstance3D@25354" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, 0, -56)
+gi_mode = 2
+mesh = ExtResource("1_1ky4i")

@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://dtfktti54mneg"]
+
+[ext_resource type="VoxelMesherBlocky" uid="uid://c6l3pdnhmvhqp" path="res://blocky_game/blocks/mesher.tres" id="1"]
+[ext_resource type="VoxelGeneratorScript" path="res://blocky_game/generator/world_generator.tres" id="4"]
+[ext_resource type="Script" path="res://blocky_game/blocky_game.gd" id="5"]
+[ext_resource type="Script" path="res://blocky_game/debug_info.gd" id="8"]
+[ext_resource type="Script" path="res://blocky_game/blocks/blocks.gd" id="12"]
+[ext_resource type="Script" path="res://blocky_game/items/item_db.gd" id="13"]
+
+[sub_resource type="ProceduralSkyMaterial" id="PhysicalSkyMaterial_ixhix"]
+sky_top_color = Color(0.22, 0.52, 0.98, 1)
+sky_horizon_color = Color(0.56, 0.78, 1, 1)
+ground_bottom_color = Color(0.28, 0.48, 0.92, 1)
+ground_horizon_color = Color(0.56, 0.78, 1, 1)
+
+[sub_resource type="Sky" id="Sky_403h4"]
+sky_material = SubResource("PhysicalSkyMaterial_ixhix")
+
+[sub_resource type="Environment" id="2"]
+background_mode = 2
+sky = SubResource("Sky_403h4")
+ambient_light_color = Color(0.58, 0.68, 0.84, 1)
+ambient_light_energy = 0.95
+ambient_light_sky_contribution = 0.95
+sdfgi_enabled = false
+sdfgi_use_occlusion = true
+glow_hdr_threshold = 0.5
+fog_enabled = false
+fog_aerial_perspective = 0.0
+
+[sub_resource type="VoxelStreamRegionFiles" id="3"]
+directory = "user://voxel_worlds/grassland_v4_clean"
+
+[node name="Game" type="Node"]
+script = ExtResource("5")
+
+[node name="Blocks" type="Node" parent="."]
+script = ExtResource("12")
+
+[node name="Items" type="Node" parent="."]
+script = ExtResource("13")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("2")
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+stream = SubResource("3")
+generator = ExtResource("4")
+mesher = ExtResource("1")
+gi_mode = 1
+generate_collisions = false
+run_stream_in_editor = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.97321, 0.172326, -0.152203, -0.0478236, 0.495785, 0.867127, 0.224888, 0.851176, -0.474262, 1.51966, 19.7004, 14.0879)
+light_color = Color(1, 0.98, 0.94, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="DebugInfo" type="Node" parent="."]
+
+[node name="Players" type="Node" parent="."]

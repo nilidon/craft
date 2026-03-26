@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://do65xlq3e6kbl"
+path="res://.godot/imported/slab.obj-1e0d43b4631d7a4fef42fd83f10733ac.mesh"
+
+[deps]
+
+files=["res://.godot/imported/slab.obj-1e0d43b4631d7a4fef42fd83f10733ac.mesh"]
+
+source_file="res://blocky_game/blocks/slab/slab.obj"
+dest_files=["res://.godot/imported/slab.obj-1e0d43b4631d7a4fef42fd83f10733ac.mesh", "res://.godot/imported/slab.obj-1e0d43b4631d7a4fef42fd83f10733ac.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

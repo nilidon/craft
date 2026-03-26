@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://cvevmyimh4dfv"
+path="res://.godot/imported/fence_corner.vox-dc1a04b4c3c20eb606033c8eb59aaea9.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/fence/fence_corner/fence_corner.vox"
+dest_files=["res://.godot/imported/fence_corner.vox-dc1a04b4c3c20eb606033c8eb59aaea9.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

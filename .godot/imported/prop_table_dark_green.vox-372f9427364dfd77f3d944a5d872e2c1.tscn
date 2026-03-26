@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_table_dark_green.vox-372f9427364dfd77f3d944a5d872e2c1.model0.mesh" id="1_a0wdw"]
+
+[node name="prop_table_dark_green" type="Node3D"]
+
+[node name="@MeshInstance3D@26012" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -17)
+gi_mode = 2
+mesh = ExtResource("1_a0wdw")

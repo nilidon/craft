@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://cwwc0j1bybf7u"
+path="res://.godot/imported/prop_designy_statue.vox-4a99b8dcadba47166cbbfc0c71f45f3a.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/prop_designy_statue/prop_designy_statue.vox"
+dest_files=["res://.godot/imported/prop_designy_statue.vox-4a99b8dcadba47166cbbfc0c71f45f3a.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

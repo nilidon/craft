@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_chest_skeleton.vox-d3adbdcb59d40d65655378fc05c702cf.model0.mesh" id="1_xd7xc"]
+
+[node name="prop_chest_skeleton" type="Node3D"]
+
+[node name="@MeshInstance3D@26050" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -9)
+gi_mode = 2
+mesh = ExtResource("1_xd7xc")

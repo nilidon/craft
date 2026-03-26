@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://5a06nwrutijs"
+path="res://.godot/imported/prop_drawer_light_brown.vox-f26bd631c59191e4932f5279b6166776.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/prop_drawer_light_brown/prop_drawer_light_brown.vox"
+dest_files=["res://.godot/imported/prop_drawer_light_brown.vox-f26bd631c59191e4932f5279b6166776.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://ctpe38r3dhx2b"
+path="res://.godot/imported/flower_rose.vox-334be889a80064b02f59abd45d0500d2.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Nature/flower_rose/flower_rose.vox"
+dest_files=["res://.godot/imported/flower_rose.vox-334be889a80064b02f59abd45d0500d2.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

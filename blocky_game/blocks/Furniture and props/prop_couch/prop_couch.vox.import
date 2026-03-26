@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://cov5akqgb07j7"
+path="res://.godot/imported/prop_couch.vox-fe66b4c11629f5c4883468a81b273713.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/prop_couch/prop_couch.vox"
+dest_files=["res://.godot/imported/prop_couch.vox-fe66b4c11629f5c4883468a81b273713.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://blwtenuo2t7sk"
+path="res://.godot/imported/rock_2.vox-6e3c1bc5c8fd9c2ee143beff58e1bb4e.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Nature/rocks/rock_2/rock_2.vox"
+dest_files=["res://.godot/imported/rock_2.vox-6e3c1bc5c8fd9c2ee143beff58e1bb4e.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://bwlrj7svypne0"
+path="res://.godot/imported/prop_oven.vox-1efcd7d7199f042f9161f5d3b46074dd.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/prop_oven/prop_oven.vox"
+dest_files=["res://.godot/imported/prop_oven.vox-1efcd7d7199f042f9161f5d3b46074dd.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

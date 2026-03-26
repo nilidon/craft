@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnjaq7l3rad5y"]
+
+[ext_resource type="Texture2D" uid="uid://v05v450v10bb" path="res://blocky_game/blocks/clear_glass/clear_glass.png" id="1"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1")
+texture_filter = 1

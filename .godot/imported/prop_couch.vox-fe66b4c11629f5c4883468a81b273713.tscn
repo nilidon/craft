@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_couch.vox-fe66b4c11629f5c4883468a81b273713.model0.mesh" id="1_s5l23"]
+
+[node name="prop_couch" type="Node3D"]
+
+[node name="@MeshInstance3D@24144" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -16)
+gi_mode = 2
+mesh = ExtResource("1_s5l23")

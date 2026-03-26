@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/fence_corner.vox-dc1a04b4c3c20eb606033c8eb59aaea9.model0.mesh" id="1_xp6tf"]
+
+[node name="fence_corner" type="Node3D"]
+
+[node name="@MeshInstance3D@26008" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("1_xp6tf")

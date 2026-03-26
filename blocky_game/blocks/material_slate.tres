@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ervv4c8ibqms"]
+
+[ext_resource type="Texture2D" uid="uid://by6chs4v752ka" path="res://blocky_game/blocks/slate/slate.png" id="1"]
+
+[resource]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1")
+metallic_specular = 0.0
+uv1_triplanar = true
+texture_filter = 0

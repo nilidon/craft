@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://bdlcl5ict1j7o"
+path="res://.godot/imported/prop_pot_flower.vox-78a00f0911ff5af1aa64e92379301baa.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/prop_pot_flower/prop_pot_flower.vox"
+dest_files=["res://.godot/imported/prop_pot_flower.vox-78a00f0911ff5af1aa64e92379301baa.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

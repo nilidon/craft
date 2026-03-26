@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_lamppost.vox-5cace353a8832a8bafe2d4e7ee1e8fe0.model0.mesh" id="1_5sygs"]
+
+[node name="prop_lamppost" type="Node3D"]
+
+[node name="@MeshInstance3D@23945" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -7)
+gi_mode = 2
+mesh = ExtResource("1_5sygs")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/fence_part_1.vox-6bd6021747e11186f29771c0fda8e752.model0.mesh" id="1_te5c7"]
+
+[node name="fence_part_1" type="Node3D"]
+
+[node name="@MeshInstance3D@26014" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -4)
+gi_mode = 2
+mesh = ExtResource("1_te5c7")

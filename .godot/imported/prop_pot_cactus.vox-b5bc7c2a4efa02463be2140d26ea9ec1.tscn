@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_pot_cactus.vox-b5bc7c2a4efa02463be2140d26ea9ec1.model0.mesh" id="1_5o4um"]
+
+[node name="prop_pot_cactus" type="Node3D"]
+
+[node name="@MeshInstance3D@26042" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
+gi_mode = 2
+mesh = ExtResource("1_5o4um")

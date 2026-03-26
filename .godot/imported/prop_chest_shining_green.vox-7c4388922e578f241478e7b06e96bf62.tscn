@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_chest_shining_green.vox-7c4388922e578f241478e7b06e96bf62.model0.mesh" id="1_ww38u"]
+
+[node name="prop_chest_shining_green" type="Node3D"]
+
+[node name="@MeshInstance3D@26048" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+gi_mode = 2
+mesh = ExtResource("1_ww38u")

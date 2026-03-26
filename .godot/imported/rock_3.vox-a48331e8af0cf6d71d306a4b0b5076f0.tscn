@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/rock_3.vox-a48331e8af0cf6d71d306a4b0b5076f0.model0.mesh" id="1_iu5r0"]
+
+[node name="rock_3" type="Node3D"]
+
+[node name="@MeshInstance3D@25332" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -17)
+gi_mode = 2
+mesh = ExtResource("1_iu5r0")

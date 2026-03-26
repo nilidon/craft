@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bt0rpqggs71n3"
+path="res://.godot/imported/snow.obj-9ff4645e0eb3fd08e1249d541d3f01eb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/snow.obj-9ff4645e0eb3fd08e1249d541d3f01eb.mesh"]
+
+source_file="res://blocky_game/blocks/snow/snow.obj"
+dest_files=["res://.godot/imported/snow.obj-9ff4645e0eb3fd08e1249d541d3f01eb.mesh", "res://.godot/imported/snow.obj-9ff4645e0eb3fd08e1249d541d3f01eb.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

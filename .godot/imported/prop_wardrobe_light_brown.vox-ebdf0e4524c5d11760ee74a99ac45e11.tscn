@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/prop_wardrobe_light_brown.vox-ebdf0e4524c5d11760ee74a99ac45e11.model0.mesh" id="1_0sg40"]
+
+[node name="prop_wardrobe_light_brown" type="Node3D"]
+
+[node name="@MeshInstance3D@24146" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -14)
+gi_mode = 2
+mesh = ExtResource("1_0sg40")

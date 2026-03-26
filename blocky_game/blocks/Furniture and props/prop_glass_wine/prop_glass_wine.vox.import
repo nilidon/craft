@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://wjlkjeg07uak"
+path="res://.godot/imported/prop_glass_wine.vox-ad3fff8d60ef2224b2bd6f667d9c45e7.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/prop_glass_wine/prop_glass_wine.vox"
+dest_files=["res://.godot/imported/prop_glass_wine.vox-ad3fff8d60ef2224b2bd6f667d9c45e7.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

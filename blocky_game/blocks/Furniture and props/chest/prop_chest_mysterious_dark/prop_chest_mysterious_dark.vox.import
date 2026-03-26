@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://d0o7n42ocd5ts"
+path="res://.godot/imported/prop_chest_mysterious_dark.vox-0083d68c344d34715847f5cac70d439a.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Furniture and props/chest/prop_chest_mysterious_dark/prop_chest_mysterious_dark.vox"
+dest_files=["res://.godot/imported/prop_chest_mysterious_dark.vox-0083d68c344d34715847f5cac70d439a.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

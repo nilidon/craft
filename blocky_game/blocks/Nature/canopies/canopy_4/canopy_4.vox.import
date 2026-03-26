@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://dqkecfq0453p7"
+path="res://.godot/imported/canopy_4.vox-3ac333a3ad58d30f40216f39133b494f.tscn"
+
+[deps]
+
+source_file="res://blocky_game/blocks/Nature/canopies/canopy_4/canopy_4.vox"
+dest_files=["res://.godot/imported/canopy_4.vox-3ac333a3ad58d30f40216f39133b494f.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

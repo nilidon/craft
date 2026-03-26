@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ckhxr4xovm2y4"]
+
+[ext_resource type="FontFile" uid="uid://crwyrh6rks167" path="res://blocky_game/font/static/Rubik-ExtraBold.ttf" id="1"]
+
+[resource]
+default_font = ExtResource("1")

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://3qjtt6tq21v5"
+path="res://.godot/imported/clear_glass.obj-2ec65757ce027244530a38e488f5335f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/clear_glass.obj-2ec65757ce027244530a38e488f5335f.mesh"]
+
+source_file="res://blocky_game/blocks/clear_glass/clear_glass.obj"
+dest_files=["res://.godot/imported/clear_glass.obj-2ec65757ce027244530a38e488f5335f.mesh", "res://.godot/imported/clear_glass.obj-2ec65757ce027244530a38e488f5335f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
