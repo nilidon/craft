@@ -168,8 +168,8 @@ signal host_server_requested(room_code: String, port: int, world_slug: String)
 var _menu_coins_hud: CoinsHud = null
 
 
-func set_menu_coins_hud(hud: CoinsHud) -> void:
-	_menu_coins_hud = hud
+func set_menu_coins_hud(hud: Variant) -> void:
+	_menu_coins_hud = hud as CoinsHud
 	_sync_menu_coins_hud()
 
 
@@ -216,7 +216,6 @@ func _wire_one_shot_button_audio(b: BaseButton) -> void:
 
 
 func _ready() -> void:
-	get_viewport().size_changed.connect(_refit_main_menu_layout)
 	_setup_delete_world_dialog()
 	PlayerSettings.repair_skin_path_if_locked_in_file()
 	if _character_carousel != null:
@@ -260,52 +259,8 @@ func _refit_main_menu_layout() -> void:
 		_main_margin.add_theme_constant_override(&"margin_top", 20 + ins.y)
 		_main_margin.add_theme_constant_override(&"margin_right", 24 + ins.z)
 		_main_margin.add_theme_constant_override(&"margin_bottom", 20 + ins.w)
-	if _settings_overlay != null:
-		_settings_overlay.offset_left = float(ins.x)
-		_settings_overlay.offset_top = float(ins.y)
-		_settings_overlay.offset_right = -float(ins.z)
-		_settings_overlay.offset_bottom = -float(ins.w)
-	if _screen_worlds != null:
-		_screen_worlds.offset_left = float(ins.x)
-		_screen_worlds.offset_top = float(ins.y)
-		_screen_worlds.offset_right = -float(ins.z)
-		_screen_worlds.offset_bottom = -float(ins.w)
-	if _screen_skins != null:
-		_screen_skins.offset_left = float(ins.x)
-		_screen_skins.offset_top = float(ins.y)
-		_screen_skins.offset_right = -float(ins.z)
-		_screen_skins.offset_bottom = -float(ins.w)
-	if _screen_multiplayer != null:
-		_screen_multiplayer.offset_left = float(ins.x)
-		_screen_multiplayer.offset_top = float(ins.y)
-		_screen_multiplayer.offset_right = -float(ins.z)
-		_screen_multiplayer.offset_bottom = -float(ins.w)
-	var cap_btn_w := minf(420.0, cw * 0.86)
-	var by_width := clampf(cw * 0.30, minf(150.0, cap_btn_w), cap_btn_w)
-	var stack_gaps := 4.0 * float(_MENU_BTN_STACK_SEP)
-	var by_height := maxf(ch * 0.40 - stack_gaps, 48.0) / maxf(5.0 * _MENU_BTN_ASPECT, 0.001)
-	var bw := minf(by_width, by_height)
-	var min_btn_w := minf(140.0, cw * 0.92)
-	bw = maxf(bw, min_btn_w)
-	var bh := bw * _MENU_BTN_ASPECT
-	var btn_size := Vector2(bw, bh)
-	for b in _menu_texture_buttons:
-		if b != null:
-			b.custom_minimum_size = btn_size
-	for b in _multiplayer_launch_texture_buttons:
-		if b != null:
-			b.custom_minimum_size = btn_size
-	if _game_title != null:
-		_game_title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		_game_title.max_lines_visible = 2
-		_game_title.clip_text = false
-		_game_title.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
-		var title_w := clampf(cw * 0.94, 200.0, minf(1240.0, vw * 0.96))
-		_game_title.custom_minimum_size.x = title_w
-		var title_px := clampi(int(round(cw * 0.036)), 26, 72)
-		_game_title.add_theme_font_size_override("font_size", title_px)
-		var outline_px := clampi(int(round(float(title_px) / 8.0)), 4, 11)
-		_game_title.add_theme_constant_override("outline_size", outline_px)
+	## Full-screen overlay roots (_settings_overlay, _screen_*) stay scene default full-rect; safe-area is
+	## only applied on [_main_margin] so stretch + manual offsets cannot desync draw vs input on mobile.
 	var worlds_edge := clampf(cw * 0.016, 10.0, 22.0)
 	## Match legacy 150×100 minimum; scale up on wide screens (same aspect as menu art).
 	var back_w := clampf(cw * 0.112, 150.0, 200.0)

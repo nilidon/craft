@@ -10,6 +10,8 @@ const WorldPaths = preload("./world_paths.gd")
 const WorldCatalog = preload("./world_catalog.gd")
 const WorldMeta = preload("./world_meta.gd")
 const CoinsHudScript = preload("res://blocky_game/gui/coins_hud.gd")
+## Set true to show menu coins HUD again; false removes it from the main menu to rule out touch interception.
+const _MENU_COINS_HUD_ON_MAIN := false
 
 @onready var _main_menu: MainMenu = $MainMenu
 
@@ -24,14 +26,13 @@ func _ready() -> void:
 	if vp != null:
 		vp.gui_disable_input = false
 	PlayerSettings.apply_master_linear(PlayerSettings.get_master_linear())
-	_menu_coins_hud = CoinsHudScript.new()
-	_menu_coins_hud.name = "MenuCoinsHud"
-	add_child(_menu_coins_hud)
-	## [CoinsHud._ready] sets 105 for in-game (above DDD). On the main menu keep a modest layer so stacking
-	## matches the implicit root canvas and touch routing stays predictable on handhelds.
-	_menu_coins_hud.layer = 24
+	if _MENU_COINS_HUD_ON_MAIN:
+		_menu_coins_hud = CoinsHudScript.new()
+		_menu_coins_hud.name = "MenuCoinsHud"
+		add_child(_menu_coins_hud)
+		_menu_coins_hud.layer = 24
 	if _main_menu != null and _main_menu.has_method(&"set_menu_coins_hud"):
-		_main_menu.set_menu_coins_hud(_menu_coins_hud)
+		_main_menu.set_menu_coins_hud(_menu_coins_hud if _MENU_COINS_HUD_ON_MAIN else null)
 
 
 func _pause_menu_would_freeze_tree() -> bool:
