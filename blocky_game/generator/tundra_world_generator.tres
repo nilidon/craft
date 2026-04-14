@@ -1,0 +1,6 @@
+[gd_resource type="VoxelGeneratorScript" load_steps=2 format=3 uid="uid://dt1sldinb1pl2"]
+
+[ext_resource type="Script" uid="uid://c3do1jpncw85y" path="res://blocky_game/generator/tundra_generator.gd" id="1"]
+
+[resource]
+script = ExtResource("1")

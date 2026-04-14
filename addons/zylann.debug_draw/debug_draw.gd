@@ -45,6 +45,15 @@ var _mesh_material_pool := []
 
 
 func _ready():
+	## On handheld builds, skip 3D debug nodes on this CanvasLayer — they can break root GUI
+	## touch/mouse picking on some Android GPUs / Godot versions while the menu has no 3D scene.
+	if not Engine.is_editor_hint():
+		var n := OS.get_name()
+		if n == &"Android" or n == &"iOS":
+			visible = false
+			process_mode = Node.PROCESS_MODE_DISABLED
+			layer = -1000
+			return
 	# Always process even if the game is paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Draw 2D on top of every other CanvasLayer

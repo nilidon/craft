@@ -1,21 +1,184 @@
-[gd_scene load_steps=3 format=3 uid="uid://djih65ishd80"]
+[gd_scene load_steps=29 format=3 uid="uid://djih65ishd80"]
 
 [ext_resource type="Script" uid="uid://c4vf5kxgrsxhq" path="res://blocky_game/main.gd" id="1_33xa8"]
 [ext_resource type="Script" uid="uid://ds51ne55gfw6y" path="res://blocky_game/main_menu.gd" id="2_koemg"]
+[ext_resource type="Theme" uid="uid://ckhxr4xovm2y4" path="res://blocky_game/ui/theme_global.tres" id="3_theme"]
+[ext_resource type="Texture2D" uid="uid://cnhu02nl3vmog" path="res://blocky_game/main menu.png" id="4_menu_bg"]
+[ext_resource type="Texture2D" uid="uid://dyblcrwbubm25" path="res://blocky_game/buttons/playbutton.png" id="5_play"]
+[ext_resource type="Texture2D" uid="uid://d08ilicuxa8iu" path="res://blocky_game/buttons/worldsbutton.png" id="6_worlds"]
+[ext_resource type="Texture2D" uid="uid://coec7vd430brp" path="res://blocky_game/buttons/multiplayer button.png" id="7_multi"]
+[ext_resource type="Texture2D" uid="uid://dycmovioli8sy" path="res://blocky_game/buttons/quitbutton.png" id="8_quit"]
+[ext_resource type="Texture2D" uid="uid://cpk36lpjm2od4" path="res://blocky_game/buttons/settings icon.png" id="9_settings_icon"]
+[ext_resource type="Texture2D" uid="uid://btp1he51bbfv4" path="res://blocky_game/buttons/hostbutton.png" id="10_hostbtn"]
+[ext_resource type="Texture2D" uid="uid://bjw141ykx05kw" path="res://blocky_game/buttons/joinbutton.png" id="11_joinbtn"]
+[ext_resource type="Texture2D" uid="uid://c4ttu5470y0tn" path="res://blocky_game/buttons/skinsbutton.png" id="12_skinsbtn"]
+[ext_resource type="PackedScene" uid="uid://c8k2n7xqh4mwp" path="res://blocky_game/ui/character_select/character_select_carousel.tscn" id="13_csel_car"]
+[ext_resource type="Texture2D" uid="uid://b8sknscrnbg01" path="res://blocky_game/skinsscreenbc.png" id="15_skins_bg"]
+[ext_resource type="Shader" uid="uid://bw8smla2v7hxr" path="res://blocky_game/ui/character_select/skins_screen_bg_blur.gdshader" id="16_skins_menu_bg_shader"]
+[ext_resource type="Texture2D" uid="uid://clow6ju20e5qj" path="res://blocky_game/buttons/backbutton.png" id="17_skins_back"]
+[ext_resource type="Script" uid="uid://x6r1omhdk05w" path="res://blocky_game/buttons/texture_button_alpha_click_mask.gd" id="18_back_btn_mask"]
+[ext_resource type="Texture2D" uid="uid://bqm4xk8n2w0v7" path="res://blocky_game/multiplayerbc.png" id="19_multiplayer_bg"]
 
-[node name="Main" type="Node"]
-script = ExtResource("1_33xa8")
+[sub_resource type="ShaderMaterial" id="WorldsBg_BlurMaterial"]
+shader = ExtResource("16_skins_menu_bg_shader")
+shader_parameter/blur_texels = 14.0
 
-[node name="MainMenu" type="Control" parent="."]
+[sub_resource type="StyleBoxFlat" id="WorldsTabSegmentShell_Style"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.05, 0.07, 0.12, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38, 0.52, 0.72, 0.65)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="WorldsSectionSaved_Style"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.07, 0.09, 0.14, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.52, 0.7, 0.55)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0, 0, 0, 0.32)
+shadow_size = 8
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="WorldsLineEdit_Style"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.08, 0.1, 0.15, 0.97)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42, 0.54, 0.72, 0.5)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="WorldsSectionNew_Style"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.07, 0.09, 0.14, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.52, 0.7, 0.55)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0, 0, 0, 0.32)
+shadow_size = 8
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="ShaderMaterial" id="SkinsBg_BlurMaterial"]
+shader = ExtResource("16_skins_menu_bg_shader")
+shader_parameter/blur_texels = 14.0
+
+[sub_resource type="StyleBoxFlat" id="WorldsPanel_Style"]
+content_margin_left = 20.0
+content_margin_top = 18.0
+content_margin_right = 20.0
+content_margin_bottom = 18.0
+bg_color = Color(0.07, 0.09, 0.14, 0.98)
+border_color = Color(0.32, 0.44, 0.62, 0.88)
+
+[sub_resource type="StyleBoxFlat" id="SettingsPanel_Style"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.08, 0.1, 0.15, 0.97)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.38, 0.52, 0.9)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 16
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxEmpty" id="NoFocus_Style"]
+
+[sub_resource type="StyleBoxFlat" id="SettingsRow_Style"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.14, 0.18, 0.26, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.32, 0.42, 0.55, 0.75)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_33xa8")
+
+[node name="MainMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_theme")
 script = ExtResource("2_koemg")
 
-[node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+[node name="Background" type="TextureRect" parent="MainMenu"]
+z_index = -100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_menu_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MenuRoot" type="Control" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,73 +186,1139 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MainMenu/CenterContainer"]
+[node name="WorldsMenuDim" type="ColorRect" parent="MainMenu/MenuRoot"]
+visible = false
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.03, 0.06, 0.82)
+
+[node name="ScreenCenter" type="CenterContainer" parent="MainMenu/MenuRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/MenuRoot/ScreenCenter"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxRoot" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ScreenMain" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="GameTitle" type="Label" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.62)
+theme_override_colors/font_outline_color = Color(0.04, 0.06, 0.12, 0.96)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+text = "Creative Craft 3D: Building Game"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="AfterTitleSpace" type="Control" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MainMenu/CenterContainer/PanelContainer"]
+[node name="MainButtons" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+size_flags_horizontal = 6
+theme_override_constants/separation = 14
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer"]
+[node name="PlayButton" type="TextureButton" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain/MainButtons"]
+custom_minimum_size = Vector2(360, 60)
 layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_play")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="GameTitle" type="Label" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="WorldsButton" type="TextureButton" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain/MainButtons"]
+custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Blocky Game Demo"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_worlds")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SkinsButton" type="TextureButton" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain/MainButtons"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("12_skinsbtn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MultiplayerToggle" type="TextureButton" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain/MainButtons"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_multi")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="QuitButton" type="TextureButton" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain/MainButtons"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_quit")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MessageLabel" type="Label" parent="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.35, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 2
+
+[node name="ScreenWorlds" type="Control" parent="MainMenu/MenuRoot"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldsBg" type="TextureRect" parent="MainMenu/MenuRoot/ScreenWorlds"]
+z_index = -2
+material = SubResource("WorldsBg_BlurMaterial")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_skins_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="WorldsVBox" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenWorlds"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="WorldsHeaderBand" type="Control" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WorldsTitleCenter" type="CenterContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsHeaderBand"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldsTitle" type="Label" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsHeaderBand/WorldsTitleCenter"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 44
+text = "Worlds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorldsTabBody" type="HBoxContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="WorldsTabLeftColumn" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="WorldsTabSegment" type="PanelContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabLeftColumn"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("WorldsTabSegmentShell_Style")
+
+[node name="TabSegmentMargin" type="MarginContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabLeftColumn/WorldsTabSegment"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TabSegmentRow" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabLeftColumn/WorldsTabSegment/TabSegmentMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TabSavedWorldsButton" type="Button" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabLeftColumn/WorldsTabSegment/TabSegmentMargin/TabSegmentRow"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.96, 0.97, 1, 1)
+text = "Your worlds"
+
+[node name="TabNewWorldButton" type="Button" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabLeftColumn/WorldsTabSegment/TabSegmentMargin/TabSegmentRow"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.96, 0.97, 1, 1)
+text = "New world"
+
+[node name="WorldsTabContent" type="Control" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SavedWorldsSection" type="PanelContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("WorldsSectionSaved_Style")
+
+[node name="SavedVBox" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="WorldSearchEdit" type="LineEdit" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+theme_override_colors/caret_color = Color(0.95, 0.96, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.55, 0.62, 0.76, 1)
+theme_override_colors/font_color = Color(0.95, 0.96, 0.99, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("WorldsLineEdit_Style")
+placeholder_text = "Search worlds…"
+clear_button_enabled = true
+
+[node name="WorldScroll" type="ScrollContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+
+[node name="WorldScrollGutter" type="MarginContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox/WorldScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 12
+
+[node name="WorldCardsRow" type="HFlowContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox/WorldScroll/WorldScrollGutter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/h_separation = 14
+theme_override_constants/v_separation = 14
+
+[node name="WorldEmptyHint" type="Label" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.88, 0.96, 1)
+theme_override_font_sizes/font_size = 15
+text = "No saves yet — pick New world on the left to create one."
+autowrap_mode = 2
+
+[node name="SavedActionsRow" type="HBoxContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DeleteWorldButton" type="Button" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox/SavedActionsRow"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Delete"
+
+[node name="PlayWorldButton" type="Button" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox/SavedActionsRow"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Play"
+
+[node name="NewWorldSection" type="PanelContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("WorldsSectionNew_Style")
+
+[node name="NewVBox" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/NewWorldSection"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NewWorldEdit" type="LineEdit" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/NewWorldSection/NewVBox"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+theme_override_colors/caret_color = Color(0.95, 0.96, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.55, 0.62, 0.76, 1)
+theme_override_colors/font_color = Color(0.95, 0.96, 0.99, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("WorldsLineEdit_Style")
+placeholder_text = "Name your world…"
+
+[node name="TerrainLabel" type="Label" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/NewWorldSection/NewVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 15
+text = "Terrain — choose a style"
+
+[node name="MapScroll" type="ScrollContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/NewWorldSection/NewVBox"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+
+[node name="MapScrollGutter" type="MarginContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/NewWorldSection/NewVBox/MapScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 12
+
+[node name="MapCardsRow" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/NewWorldSection/NewVBox/MapScroll/MapScrollGutter"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="CreatePlayButton" type="Button" parent="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/NewWorldSection/NewVBox"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Create & play"
+
+[node name="WorldsBackButton" type="TextureButton" parent="MainMenu/MenuRoot/ScreenWorlds"]
+z_index = 4
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 166.0
+offset_bottom = 116.0
+grow_horizontal = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("17_skins_back")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("18_back_btn_mask")
+
+[node name="WorldsMessageLabel" type="Label" parent="MainMenu/MenuRoot/ScreenWorlds"]
+visible = false
+z_index = 3
+layout_mode = 1
+offset_left = 10.0
+offset_top = 70.0
+offset_right = -10.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.42, 0.38, 1)
+theme_override_colors/font_outline_color = Color(0.06, 0.04, 0.08, 0.95)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ScreenSkins" type="Control" parent="MainMenu/MenuRoot"]
+visible = false
+z_index = 2
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkinsBg" type="TextureRect" parent="MainMenu/MenuRoot/ScreenSkins"]
+z_index = -2
+material = SubResource("SkinsBg_BlurMaterial")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_skins_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="SkinsVBox" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenSkins"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="SkinsShopMessageSlot" type="Control" parent="MainMenu/MenuRoot/ScreenSkins/SkinsVBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="SkinsShopMessageLabel" type="Label" parent="MainMenu/MenuRoot/ScreenSkins/SkinsVBox/SkinsShopMessageSlot"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.42, 0.38, 1)
+theme_override_colors/font_outline_color = Color(0.06, 0.04, 0.08, 0.95)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SkinsCarouselMargin" type="MarginContainer" parent="MainMenu/MenuRoot/ScreenSkins/SkinsVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="CharacterSelectCarousel" parent="MainMenu/MenuRoot/ScreenSkins/SkinsVBox/SkinsCarouselMargin" instance=ExtResource("13_csel_car")]
+
+[node name="SkinsBackButton" type="TextureButton" parent="MainMenu/MenuRoot/ScreenSkins"]
+z_index = 4
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 166.0
+offset_bottom = 116.0
+grow_horizontal = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("17_skins_back")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("18_back_btn_mask")
+
+[node name="ScreenMultiplayer" type="Control" parent="MainMenu/MenuRoot"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MultiBg" type="TextureRect" parent="MainMenu/MenuRoot/ScreenMultiplayer"]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_multiplayer_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MultiLaunchCenter" type="CenterContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MultiLaunchVBox" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiLaunchCenter"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="MultiHostLaunchButton" type="TextureButton" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiLaunchCenter/MultiLaunchVBox"]
+custom_minimum_size = Vector2(360, 60)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_hostbtn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MultiJoinLaunchButton" type="TextureButton" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiLaunchCenter/MultiLaunchVBox"]
+custom_minimum_size = Vector2(360, 60)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_joinbtn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MultiOuter" type="MarginContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="MultiOuterVBox" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiOuter"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="MultiTitleTopSpacer" type="Control" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiOuter/MultiOuterVBox"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MultiTitleRow" type="CenterContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiOuter/MultiOuterVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MultiTitle" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiOuter/MultiOuterVBox/MultiTitleRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 65
+text = "Multiplayer"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MultiSubtitle" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiOuter/MultiOuterVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99, 0.99, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.12, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 18
+text = "One person starts a room and shares a code. Everyone else joins with that same code."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MultiMessageLabel" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiOuter/MultiOuterVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0.82, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.02, 0.02, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 17
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MultiBackButton" type="TextureButton" parent="MainMenu/MenuRoot/ScreenMultiplayer"]
+z_index = 4
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 166.0
+offset_bottom = 116.0
+grow_horizontal = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("17_skins_back")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("18_back_btn_mask")
+
+[node name="MultiHostPopup" type="Control" parent="MainMenu/MenuRoot/ScreenMultiplayer"]
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HostPopupDim" type="ColorRect" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.06, 0.14, 0.75)
+
+[node name="HostPopupCenter" type="CenterContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HostPopupPanel" type="PanelContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter"]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("WorldsPanel_Style")
+
+[node name="HostMargin" type="MarginContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 24
+
+[node name="HostVBox" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="HostHeaderRow" type="HBoxContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HostPopupTitle" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox/HostHeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Start a room"
+vertical_alignment = 1
+
+[node name="HostPopupCloseButton" type="Button" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox/HostHeaderRow"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.88, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 24
+text = "X"
+flat = true
+
+[node name="HostHSep" type="HSeparator" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox"]
 layout_mode = 2
 
-[node name="SingleplayerButton" type="Button" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HostHelpLabel" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox"]
 layout_mode = 2
-text = "Singleplayer"
+theme_override_colors/font_color = Color(0.68, 0.74, 0.86, 1)
+theme_override_font_sizes/font_size = 14
+text = "You are the host. Make up a code, tell your friends, and they can join you in your saved world. Use letters and numbers only — at least 4 characters."
+autowrap_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HostCodeLabel" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 15
+text = "Room code"
+
+[node name="HostRoomCode" type="LineEdit" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/caret_color = Color(0.95, 0.96, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.55, 0.62, 0.74, 1)
+theme_override_colors/font_color = Color(0.94, 0.96, 0.99, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("WorldsLineEdit_Style")
+placeholder_text = "Example: TREEHOUSE"
+
+[node name="HostWorldLabel" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "World: —"
+autowrap_mode = 2
+
+[node name="HostFeedbackLabel" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.85, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.02, 0.02, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 2
+
+[node name="HostServerButton" type="Button" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+focus_mode = 0
+text = "Start — others can join now"
+flat = true
+
+[node name="MultiJoinPopup" type="Control" parent="MainMenu/MenuRoot/ScreenMultiplayer"]
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JoinPopupDim" type="ColorRect" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.06, 0.14, 0.75)
+
+[node name="JoinPopupCenter" type="CenterContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="JoinPopupPanel" type="PanelContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter"]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("WorldsPanel_Style")
+
+[node name="JoinMargin" type="MarginContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 24
+
+[node name="JoinVBox" type="VBoxContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="JoinHeaderRow" type="HBoxContainer" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="JoinPopupTitle" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox/JoinHeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Join someone"
+vertical_alignment = 1
+
+[node name="JoinPopupCloseButton" type="Button" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox/JoinHeaderRow"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.88, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 24
+text = "X"
+flat = true
+
+[node name="JoinHSep" type="HSeparator" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="JoinHelpLabel" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.74, 0.86, 1)
+theme_override_font_sizes/font_size = 14
+text = "Ask the host for their room code. Type it below exactly the way they wrote it (same letters and numbers)."
+autowrap_mode = 2
+
+[node name="JoinCodeLabel" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 15
+text = "Room code"
+
+[node name="JoinRoomCode" type="LineEdit" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/caret_color = Color(0.95, 0.96, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.55, 0.62, 0.74, 1)
+theme_override_colors/font_color = Color(0.94, 0.96, 0.99, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("WorldsLineEdit_Style")
+placeholder_text = "Code from the host"
+
+[node name="JoinFeedbackLabel" type="Label" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.85, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.02, 0.02, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 2
+
+[node name="ConnectToServerButton" type="Button" parent="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+focus_mode = 0
+text = "Join their room"
+flat = true
+
+[node name="SettingsMenuLayer" type="CanvasLayer" parent="MainMenu"]
+layer = 200
+
+[node name="SettingsOverlay" type="Control" parent="MainMenu/SettingsMenuLayer"]
+visible = false
+z_index = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="MainMenu/SettingsMenuLayer/SettingsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.04, 0.09, 0.65)
+
+[node name="Center" type="CenterContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Panel" type="PanelContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("SettingsPanel_Style")
+
+[node name="Margin" type="MarginContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 22
+
+[node name="VBox" type="VBoxContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="SettingsTitle" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="SettingsBackButton" type="Button" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("NoFocus_Style")
+text = "← Back to menu"
+flat = true
+
+[node name="HSepTop" type="HSeparator" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SectionGraphics" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
 layout_mode = 2
-text = "IP:"
+theme_override_colors/font_color = Color(0.55, 0.68, 0.88, 1)
+theme_override_font_sizes/font_size = 13
+text = "GRAPHICS"
 
-[node name="IP" type="LineEdit" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+[node name="ShadowsOptionRow" type="PanelContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
-text = "127.0.0.1"
+theme_override_styles/panel = SubResource("SettingsRow_Style")
 
-[node name="Label2" type="Label" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HBox" type="HBoxContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/ShadowsOptionRow"]
 layout_mode = 2
-text = "Port: "
+mouse_filter = 2
+theme_override_constants/separation = 12
 
-[node name="Port" type="SpinBox" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ShadowsLabels" type="VBoxContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/ShadowsOptionRow/HBox"]
 layout_mode = 2
-max_value = 65535.0
-value = 25000.0
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 2
 
-[node name="ConnectToServerButton" type="Button" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ShadowsTitle" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/ShadowsOptionRow/HBox/ShadowsLabels"]
 layout_mode = 2
-text = "Connect to server"
+theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "Enable shadows"
 
-[node name="HostServerButton" type="Button" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ShadowsHint" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/ShadowsOptionRow/HBox/ShadowsLabels"]
 layout_mode = 2
-text = "Host server"
+theme_override_colors/font_color = Color(0.55, 0.62, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+text = "Tap this row to turn on or off"
 
-[node name="UPNPCheckbox" type="CheckBox" parent="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="TerrainShadowsCheck" type="CheckBox" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/ShadowsOptionRow/HBox"]
+custom_minimum_size = Vector2(44, 44)
 layout_mode = 2
-text = "Use UPnP"
+focus_mode = 0
+mouse_filter = 2
+theme_override_styles/focus = SubResource("NoFocus_Style")
+
+[node name="FovRow" type="HBoxContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="FovLabel" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/FovRow"]
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.9, 0.96, 1)
+theme_override_font_sizes/font_size = 14
+text = "Field of view"
+
+[node name="FovSlider" type="HSlider" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/FovRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+min_value = 65.0
+value = 90.0
+
+[node name="FovValue" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/FovRow"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.82, 0.94, 1)
+theme_override_font_sizes/font_size = 14
+text = "90"
+horizontal_alignment = 2
+
+[node name="CameraPersonOptionRow" type="PanelContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_styles/panel = SubResource("SettingsRow_Style")
+
+[node name="HBox" type="HBoxContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/CameraPersonOptionRow"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="CameraPersonLabels" type="VBoxContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/CameraPersonOptionRow/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="CameraPersonTitle" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/CameraPersonOptionRow/HBox/CameraPersonLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "Third-person camera"
+
+[node name="CameraPersonHint" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/CameraPersonOptionRow/HBox/CameraPersonLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.62, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+text = "Off = first person, on = camera behind the player."
+
+[node name="ThirdPersonCheck" type="CheckBox" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/CameraPersonOptionRow/HBox"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
+theme_override_styles/focus = SubResource("NoFocus_Style")
+
+[node name="HSepMid" type="HSeparator" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="SectionAudio" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.88, 1)
+theme_override_font_sizes/font_size = 13
+text = "AUDIO"
+
+[node name="VolRow" type="HBoxContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="VolLabel" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/VolRow"]
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.9, 0.96, 1)
+theme_override_font_sizes/font_size = 14
+text = "Master volume"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/VolRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+value = 100.0
+
+[node name="VolValue" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/VolRow"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.82, 0.94, 1)
+theme_override_font_sizes/font_size = 14
+text = "100%"
+horizontal_alignment = 2
+
+[node name="HSepCtrl" type="HSeparator" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="SectionControls" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.88, 1)
+theme_override_font_sizes/font_size = 13
+text = "CONTROLS"
+
+[node name="SensRow" type="HBoxContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SensLabel" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/SensRow"]
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.9, 0.96, 1)
+theme_override_font_sizes/font_size = 14
+text = "Mouse sensitivity"
+
+[node name="MouseSensSlider" type="HSlider" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/SensRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+min_value = 1.0
+value = 41.0
+
+[node name="SensValue" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/SensRow"]
+custom_minimum_size = Vector2(52, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.82, 0.94, 1)
+theme_override_font_sizes/font_size = 14
+text = "0.35"
+horizontal_alignment = 2
+
+[node name="InvertOptionRow" type="PanelContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_styles/panel = SubResource("SettingsRow_Style")
+
+[node name="HBox" type="HBoxContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/InvertOptionRow"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="InvertLabels" type="VBoxContainer" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/InvertOptionRow/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="InvertTitle" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/InvertOptionRow/HBox/InvertLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "Invert vertical look"
+
+[node name="InvertHint" type="Label" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/InvertOptionRow/HBox/InvertLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.62, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+text = "Tap this row to turn on or off"
+
+[node name="InvertLookCheck" type="CheckBox" parent="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/InvertOptionRow/HBox"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
+theme_override_styles/focus = SubResource("NoFocus_Style")
+
+[node name="SettingsButton" type="TextureButton" parent="MainMenu"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 56.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_settings_icon")
+ignore_texture_size = true
+stretch_mode = 5
 
 [connection signal="connect_to_server_requested" from="MainMenu" to="." method="_on_main_menu_connect_to_server_requested"]
 [connection signal="host_server_requested" from="MainMenu" to="." method="_on_main_menu_host_server_requested"]
 [connection signal="singleplayer_requested" from="MainMenu" to="." method="_on_main_menu_singleplayer_requested"]
-[connection signal="upnp_toggled" from="MainMenu" to="." method="_on_main_menu_upnp_toggled"]
-[connection signal="pressed" from="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SingleplayerButton" to="MainMenu" method="_on_singleplayer_button_pressed"]
-[connection signal="pressed" from="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ConnectToServerButton" to="MainMenu" method="_on_connect_to_server_button_pressed"]
-[connection signal="pressed" from="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HostServerButton" to="MainMenu" method="_on_host_server_button_pressed"]
-[connection signal="toggled" from="MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/UPNPCheckbox" to="MainMenu" method="_on_upnp_checkbox_toggled"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain/MainButtons/PlayButton" to="MainMenu" method="_on_main_play_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain/MainButtons/WorldsButton" to="MainMenu" method="_on_worlds_screen_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain/MainButtons/SkinsButton" to="MainMenu" method="_on_skins_screen_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain/MainButtons/MultiplayerToggle" to="MainMenu" method="_on_multiplayer_toggle_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenCenter/MarginContainer/VBoxRoot/ScreenMain/MainButtons/QuitButton" to="MainMenu" method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabLeftColumn/WorldsTabSegment/TabSegmentMargin/TabSegmentRow/TabSavedWorldsButton" to="MainMenu" method="_on_worlds_tab_saved_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabLeftColumn/WorldsTabSegment/TabSegmentMargin/TabSegmentRow/TabNewWorldButton" to="MainMenu" method="_on_worlds_tab_new_pressed"]
+[connection signal="text_changed" from="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox/WorldSearchEdit" to="MainMenu" method="_on_world_search_text_changed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox/SavedActionsRow/DeleteWorldButton" to="MainMenu" method="_on_delete_world_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/SavedWorldsSection/SavedVBox/SavedActionsRow/PlayWorldButton" to="MainMenu" method="_on_play_world_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenWorlds/WorldsVBox/WorldsTabBody/WorldsTabContent/NewWorldSection/NewVBox/CreatePlayButton" to="MainMenu" method="_on_create_and_play_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenWorlds/WorldsBackButton" to="MainMenu" method="_on_worlds_back_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenSkins/SkinsBackButton" to="MainMenu" method="_on_skins_back_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenMultiplayer/MultiLaunchCenter/MultiLaunchVBox/MultiHostLaunchButton" to="MainMenu" method="_on_multiplayer_host_launch_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenMultiplayer/MultiLaunchCenter/MultiLaunchVBox/MultiJoinLaunchButton" to="MainMenu" method="_on_multiplayer_join_launch_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenMultiplayer/MultiBackButton" to="MainMenu" method="_on_multiplayer_back_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox/HostHeaderRow/HostPopupCloseButton" to="MainMenu" method="_on_multiplayer_host_popup_close_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenMultiplayer/MultiHostPopup/HostPopupCenter/HostPopupPanel/HostMargin/HostVBox/HostServerButton" to="MainMenu" method="_on_host_server_button_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox/JoinHeaderRow/JoinPopupCloseButton" to="MainMenu" method="_on_multiplayer_join_popup_close_pressed"]
+[connection signal="pressed" from="MainMenu/MenuRoot/ScreenMultiplayer/MultiJoinPopup/JoinPopupCenter/JoinPopupPanel/JoinMargin/JoinVBox/ConnectToServerButton" to="MainMenu" method="_on_connect_to_server_button_pressed"]
+[connection signal="pressed" from="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/SettingsBackButton" to="MainMenu" method="_on_settings_back_pressed"]
+[connection signal="toggled" from="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/ShadowsOptionRow/HBox/TerrainShadowsCheck" to="MainMenu" method="_on_settings_shadows_toggled"]
+[connection signal="value_changed" from="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/FovRow/FovSlider" to="MainMenu" method="_on_settings_fov_changed"]
+[connection signal="toggled" from="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/CameraPersonOptionRow/HBox/ThirdPersonCheck" to="MainMenu" method="_on_settings_third_person_toggled"]
+[connection signal="value_changed" from="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/VolRow/MasterVolumeSlider" to="MainMenu" method="_on_settings_master_volume_changed"]
+[connection signal="value_changed" from="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/SensRow/MouseSensSlider" to="MainMenu" method="_on_settings_mouse_sens_changed"]
+[connection signal="toggled" from="MainMenu/SettingsMenuLayer/SettingsOverlay/Center/Panel/Margin/VBox/InvertOptionRow/HBox/InvertLookCheck" to="MainMenu" method="_on_settings_invert_look_toggled"]
+[connection signal="pressed" from="MainMenu/SettingsButton" to="MainMenu" method="_on_settings_pressed"]

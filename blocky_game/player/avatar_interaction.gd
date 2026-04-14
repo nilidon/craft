@@ -24,15 +24,12 @@ const _hotbar_keys = {
 	KEY_3: 2,
 	KEY_4: 3,
 	KEY_5: 4,
-	KEY_6: 5,
-	KEY_7: 6,
-	KEY_8: 7
+	KEY_6: 5
 }
 
 @export var terrain_path : NodePath
 @export var cursor_material : Material
 
-# TODO Eventually invert these dependencies
 @onready var _head : Camera3D = get_parent().get_node("Camera")
 @onready var _hotbar : Hotbar = get_node("../HotBar")
 @onready var _block_types : Blocks = get_node("/root/Main/Game/Blocks")
@@ -72,6 +69,9 @@ func _ready():
 		_water_updater = get_node("/root/Main/Game/Water")
 
 	_setup_build_height_hint()
+	var pm := get_node_or_null("../PauseMenu")
+	if pm != null and pm.has_method("setup_for_local_player"):
+		pm.setup_for_local_player(_terrain.get_parent() as BlockyVoxelGame)
 
 
 func _setup_build_height_hint() -> void:
@@ -117,9 +117,36 @@ func _setup_build_height_hint() -> void:
 		_build_limit_hint_label.visible = false
 		root_ctl.add_child(_build_limit_hint_label)
 	else:
-		_build_limit_hint_label = _build_hint_canvas_layer.get_node("Root/HintLabel") as Label
+		_build_limit_hint_label = _build_hint_canvas_layer.get_node_or_null("Root/HintLabel") as Label
+		if _build_limit_hint_label == null:
+			var root_ctl := _build_hint_canvas_layer.get_node_or_null("Root") as Control
+			if root_ctl == null:
+				root_ctl = Control.new()
+				root_ctl.name = "Root"
+				root_ctl.set_anchors_preset(Control.PRESET_FULL_RECT)
+				root_ctl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+				_build_hint_canvas_layer.add_child(root_ctl)
+			_build_limit_hint_label = Label.new()
+			_build_limit_hint_label.name = "HintLabel"
+			_build_limit_hint_label.anchor_left = 0.0
+			_build_limit_hint_label.anchor_top = 1.0
+			_build_limit_hint_label.anchor_right = 1.0
+			_build_limit_hint_label.anchor_bottom = 1.0
+			_build_limit_hint_label.offset_left = 0.0
+			_build_limit_hint_label.offset_top = -122.0
+			_build_limit_hint_label.offset_right = 0.0
+			_build_limit_hint_label.offset_bottom = -99.0
+			_build_limit_hint_label.add_theme_font_size_override("font_size", 20)
+			_build_limit_hint_label.add_theme_color_override("font_color", Color(1.0, 0.88, 0.45))
+			_build_limit_hint_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.92))
+			_build_limit_hint_label.add_theme_constant_override("outline_size", 6)
+			_build_limit_hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			_build_limit_hint_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			_build_limit_hint_label.visible = false
+			root_ctl.add_child(_build_limit_hint_label)
 
-	_build_limit_hint_label.text = "Max build height (%d)" % BUILD_HEIGHT_LIMIT
+	if _build_limit_hint_label != null:
+		_build_limit_hint_label.text = "Max build height (%d)" % BUILD_HEIGHT_LIMIT
 
 
 func _show_build_height_hint() -> void:
@@ -130,15 +157,48 @@ func _show_build_height_hint() -> void:
 
 
 func _get_pointed_voxel() -> VoxelRaycastResult:
-	var origin := _head.get_global_transform().origin
+	# Match the viewport center ray (required for offset third-person cameras).
+	var vp := _head.get_viewport()
+	var center := vp.get_visible_rect().size * 0.5
+	var origin := _head.project_ray_origin(center)
+	var forward := _head.project_ray_normal(center)
 	assert(not Util.vec3_has_nan(origin))
-	var forward := -_head.get_transform().basis.z.normalized()
+	if forward.length_squared() < 1e-20:
+		return null
+	forward = forward.normalized()
 	var hit := _terrain_tool.raycast(origin, forward, 10)
+	if hit == null:
+		return null
+	if not _is_voxel_hit_plausible(hit, origin, forward):
+		return null
 	return hit
+
+
+func _is_voxel_hit_plausible(hit: VoxelRaycastResult, origin: Vector3, forward: Vector3) -> bool:
+	var cell := Vector3(
+		float(hit.position.x),
+		float(hit.position.y),
+		float(hit.position.z),
+	)
+	var block_center := cell + Vector3(0.5, 0.5, 0.5)
+	if forward.dot(block_center - origin) <= 0.02:
+		return false
+	# Upward view + hits far under the feet usually mean bad rays / mesh underside, not the sky target.
+	if forward.y > 0.35:
+		var player := get_parent() as Node3D
+		if player != null:
+			var feet_y := player.position.y - PLAYER_FEET_OFFSET
+			if block_center.y < feet_y - 0.5:
+				return false
+	return true
 
 
 func _physics_process(_delta):
 	if _terrain == null:
+		return
+
+	var game := _terrain.get_parent() as BlockyVoxelGame
+	if game != null and game.is_local_gameplay_paused():
 		return
 
 	var self_player := get_parent()
@@ -166,6 +226,12 @@ func _physics_process(_delta):
 	else:
 		_cursor.hide()
 		pass # DDD.set_text("Pointed voxel", "---")
+	
+	if MobileControls.is_ui_active():
+		if MobileControls.consume_place_block():
+			_action_place = true
+		if MobileControls.consume_break_block():
+			_action_use = true
 	
 	# These inputs have to be in _fixed_process because they rely on collision queries
 	if inv_item == null or inv_item.type == InventoryItem.TYPE_BLOCK:
@@ -215,6 +281,28 @@ func _physics_process(_delta):
 
 
 func _unhandled_input(event: InputEvent):
+	if not _is_local_avatar():
+		return
+	var game := _terrain.get_parent() as BlockyVoxelGame
+	var pause_menu: CanvasLayer = get_node_or_null("../PauseMenu") as CanvasLayer
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+		var main_menu: Node = get_tree().root.get_node_or_null("Main/MainMenu")
+		if main_menu != null and main_menu.has_method("try_escape_close_settings_overlay"):
+			if bool(main_menu.call("try_escape_close_settings_overlay")):
+				get_viewport().set_input_as_handled()
+				return
+	if game != null and game.is_local_gameplay_paused():
+		if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+			if pause_menu != null and pause_menu.has_method("close_pause"):
+				pause_menu.close_pause()
+				get_viewport().set_input_as_handled()
+		return
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+		if pause_menu != null and pause_menu.has_method("toggle_pause"):
+			pause_menu.toggle_pause()
+			get_viewport().set_input_as_handled()
+		return
+
 	if event is InputEventMouseButton:
 		if event.pressed:
 			match event.button_index:
@@ -230,10 +318,17 @@ func _unhandled_input(event: InputEvent):
 					_hotbar.select_previous_slot()
 
 	elif event is InputEventKey:
-		if event.pressed:
-			if _hotbar_keys.has(event.keycode):
-				var slot_index = _hotbar_keys[event.keycode]
-				_hotbar.select_slot(slot_index)
+		if event.pressed and _hotbar_keys.has(event.keycode):
+			var slot_index = _hotbar_keys[event.keycode]
+			_hotbar.select_slot(slot_index)
+
+
+func _is_local_avatar() -> bool:
+	var avatar := get_parent()
+	var mp := get_tree().get_multiplayer()
+	if mp == null or not mp.has_multiplayer_peer():
+		return true
+	return str(avatar.name) == str(mp.get_unique_id())
 
 
 func _can_place_voxel_at(pos: Vector3) -> bool:
@@ -313,10 +408,7 @@ func _intersects_other_players(pos: Vector3, ignored_player: Node3D) -> bool:
 		if not (player is Node3D):
 			continue
 		var p: Vector3 = player.position
-		var player_aabb := AABB(
-			p + Vector3(-0.4, -0.9, -0.4),
-			Vector3(0.8, 1.8, 0.8)
-		)
+		var player_aabb := InteractionCommon.player_mover_aabb_at(p)
 		if player_aabb.intersects(placed_aabb):
 			return true
 	return false
@@ -337,11 +429,7 @@ func _intersects_any_player(pos: Vector3) -> bool:
 		# so tower-building works even when camera/player height changes.
 		if placed_top_y <= p.y + PLAYER_UNDERPLACE_MAX_Y_OFFSET:
 			continue
-		# Keep in sync with character_controller.gd collision box dimensions.
-		var player_aabb := AABB(
-			p + Vector3(-0.4, -0.9, -0.4),
-			Vector3(0.8, 1.8, 0.8)
-		)
+		var player_aabb := InteractionCommon.player_mover_aabb_at(p)
 		if player_aabb.intersects(placed_aabb):
 			return true
 	return false
@@ -351,17 +439,46 @@ func _place_single_block(pos: Vector3, block_id: int):
 	var look_dir := -_head.get_transform().basis.z
 	var mp := get_tree().get_multiplayer()
 	if mp.has_multiplayer_peer() and not mp.is_server():
+		if _is_local_avatar():
+			if block_id == Blocks.AIR_ID:
+				GameAudio.play_block_break()
+			else:
+				GameAudio.play_block_place()
+			if block_id == Blocks.AIR_ID:
+				PlayerProgress.record_block_broken()
+			elif block_id != Blocks.AIR_ID:
+				PlayerProgress.record_block_placed(block_id)
 		rpc_id(SERVER_PEER_ID, &"receive_place_single_block", pos, look_dir, block_id)
 	else:
-		var ok := InteractionCommon.place_single_block(_terrain_tool, pos, look_dir,
-			block_id, _block_types, _water_updater)
-		if not ok and block_id != Blocks.AIR_ID and pos.y >= BUILD_HEIGHT_LIMIT:
-			_show_build_height_hint()
+		_run_authoritative_place_single_block(pos, look_dir, block_id)
 
 
-# TODO Maybe use `rpc_config` so this would be less awkward?
+func _run_authoritative_place_single_block(pos: Vector3, look_dir: Vector3, block_id: int) -> void:
+	_place_single_block_authoritative(pos, look_dir, block_id)
+
+
+func _place_single_block_authoritative(pos: Vector3, look_dir: Vector3, block_id: int) -> void:
+	var game := _terrain.get_parent() as BlockyVoxelGame
+	var area := InteractionCommon.edit_aabb_for_single_block(pos)
+	if game != null:
+		if not await game.ensure_voxel_area_editable_for_edit(_terrain_tool, area):
+			if block_id != Blocks.AIR_ID and pos.y >= BUILD_HEIGHT_LIMIT:
+				_show_build_height_hint()
+			return
+	var ok := InteractionCommon.place_single_block(_terrain_tool, pos, look_dir,
+		block_id, _block_types, _water_updater, game)
+	if ok and _is_local_avatar():
+		if block_id != Blocks.AIR_ID:
+			GameAudio.play_block_place()
+			PlayerProgress.record_block_placed(block_id)
+		else:
+			GameAudio.play_block_break()
+			PlayerProgress.record_block_broken()
+	if not ok and block_id != Blocks.AIR_ID and pos.y >= BUILD_HEIGHT_LIMIT:
+		_show_build_height_hint()
+
+
 @rpc("any_peer", "call_remote", "reliable", 0)
 func receive_place_single_block(
 		_unused_pos: Vector3, _unused_look_dir: Vector3, _unused_block_id: int):
-	# The server has a different script for remote players
-	push_error("Didn't expect this method to be called")
+	push_error("receive_place_single_block should run on RemoteCharacter Interaction, not local avatar")

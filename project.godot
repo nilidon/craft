@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="New Game Project"
+config/name="Creative Craft 3D: Building Game"
 run/main_scene="uid://djih65ishd80"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
@@ -22,10 +22,21 @@ config/icon="res://icon.png"
 [autoload]
 
 DDD="*res://addons/zylann.debug_draw/debug_draw.gd"
+MobileControls="*res://blocky_game/gui/mobile/mobile_controls_state.gd"
+ProgressionBus="*res://blocky_game/progression/progression_bus.gd"
+GameAudio="*res://blocky_game/audio/game_audio.gd"
+
+[creative_craft]
+
+signaling_url="http://144.126.159.209:8787"
 
 [display]
 
-window/stretch/mode="2d"
+; Sensor landscape: no portrait; device may use normal or reverse landscape.
+window/handheld/orientation=4
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [filesystem]
@@ -35,6 +46,10 @@ import/blender/enabled=false
 [gui]
 
 theme/custom="res://blocky_game/ui/theme_global.tres"
+
+[input_devices]
+
+pointing/emulate_mouse_from_touch=true
 
 [physics]
 

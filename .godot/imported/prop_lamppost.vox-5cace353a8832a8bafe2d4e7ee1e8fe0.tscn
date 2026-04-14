@@ -4,7 +4,7 @@
 
 [node name="prop_lamppost" type="Node3D"]
 
-[node name="@MeshInstance3D@23945" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@24000" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -7)
 gi_mode = 2
 mesh = ExtResource("1_5sygs")

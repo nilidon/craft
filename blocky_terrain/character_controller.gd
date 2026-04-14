@@ -1,5 +1,7 @@
 extends Node3D
 
+const _InteractionCommon := preload("res://blocky_game/player/interaction_common.gd")
+
 @export var speed := 5.0
 @export var gravity := 9.8
 @export var jump_force := 5.0

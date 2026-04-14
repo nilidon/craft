@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dedicated_server_main_cc3d"]
+
+[ext_resource type="Script" path="res://blocky_game/dedicated_server_main.gd" id="1_script"]
+
+[node name="DedicatedServerMain" type="Node"]
+script = ExtResource("1_script")

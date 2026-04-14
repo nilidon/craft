@@ -4,7 +4,7 @@
 
 [node name="prop_wardrobe_light_brown" type="Node3D"]
 
-[node name="@MeshInstance3D@24146" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23980" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -14)
 gi_mode = 2
 mesh = ExtResource("1_0sg40")

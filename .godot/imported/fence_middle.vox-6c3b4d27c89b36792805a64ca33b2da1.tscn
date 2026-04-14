@@ -4,7 +4,7 @@
 
 [node name="fence_middle" type="Node3D"]
 
-[node name="@MeshInstance3D@26020" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23956" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
 gi_mode = 2
 mesh = ExtResource("1_yf6v5")

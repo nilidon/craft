@@ -51,16 +51,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -284.0
+offset_left = -220.0
 offset_top = 10.0
-offset_right = 284.0
+offset_right = 220.0
 offset_bottom = 86.0
 theme_override_styles/panel = SubResource( 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 208.0
+offset_left = 144.0
 offset_top = 16.0
-offset_right = 748.0
+offset_right = 684.0
 offset_bottom = 80.0
 theme_override_constants/separation = 10
 __meta__ = {
@@ -91,11 +91,3 @@ offset_right = 336.0
 [node name="HotbarSlot6" parent="HBoxContainer" instance=ExtResource( 3 )]
 offset_left = 340.0
 offset_right = 404.0
-
-[node name="HotbarSlot7" parent="HBoxContainer" instance=ExtResource( 3 )]
-offset_left = 408.0
-offset_right = 472.0
-
-[node name="HotbarSlot8" parent="HBoxContainer" instance=ExtResource( 3 )]
-offset_left = 476.0
-offset_right = 540.0

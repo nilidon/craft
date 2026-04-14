@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8m0b1lehud01"]
+
+[ext_resource type="Script" path="res://blocky_game/gui/mobile/mobile_game_hud.gd" id="1"]
+[ext_resource type="Script" path="res://blocky_game/gui/mobile/virtual_joystick.gd" id="2"]
+[ext_resource type="Script" path="res://blocky_game/gui/mobile/touch_look_zone.gd" id="3"]
+[ext_resource type="Script" path="res://blocky_game/gui/mobile/mobile_circle_action.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://btvodyw4mijdm" path="res://blocky_game/fly.png" id="5_fly"]
+[ext_resource type="Script" path="res://blocky_game/gui/mobile/mobile_fly_button.gd" id="6_flybtn"]
+[ext_resource type="Texture2D" uid="uid://bseos8eqe3n4x" path="res://blocky_game/break.png" id="8_break"]
+
+[node name="MobileGameHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="TouchLookZone" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -292.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("3")
+
+[node name="Joystick" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -174.0
+offset_right = 196.0
+offset_bottom = -24.0
+grow_vertical = 0
+mouse_filter = 0
+script = ExtResource("2")
+
+[node name="RightColumn" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -286.0
+offset_right = -16.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_constants/separation = 14
+alignment = 2
+
+[node name="UpCircle" type="Control" parent="RightColumn"]
+visible = false
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 2
+script = ExtResource("4")
+arrow_single_up = true
+
+[node name="DownCircle" type="Control" parent="RightColumn"]
+visible = false
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 2
+script = ExtResource("4")
+arrow_single_down = true
+
+[node name="JumpCircle" type="Control" parent="RightColumn"]
+custom_minimum_size = Vector2(152, 152)
+layout_mode = 2
+script = ExtResource("4")
+arrow_up = true
+
+[node name="TopRightStack" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -112.0
+offset_top = 64.0
+offset_right = -12.0
+offset_bottom = 372.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 4
+alignment = 0
+
+[node name="FlyCorner" type="Control" parent="TopRightStack"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 0
+script = ExtResource("6_flybtn")
+hud_action = 0
+icon_texture = ExtResource("5_fly")
+
+[node name="PlaceBlock" type="Control" parent="TopRightStack"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 0
+script = ExtResource("6_flybtn")
+hud_action = 1
+display_label = "Place"
+
+[node name="BreakBlock" type="Control" parent="TopRightStack"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 0
+script = ExtResource("6_flybtn")
+hud_action = 2
+display_label = "Break"
+icon_texture = ExtResource("8_break")

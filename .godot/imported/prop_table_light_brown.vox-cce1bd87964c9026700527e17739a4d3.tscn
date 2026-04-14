@@ -4,7 +4,7 @@
 
 [node name="prop_table_light_brown" type="Node3D"]
 
-[node name="@MeshInstance3D@24152" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23982" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -17)
 gi_mode = 2
 mesh = ExtResource("1_wuxgg")

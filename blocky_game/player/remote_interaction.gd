@@ -27,17 +27,39 @@ func _ready():
 		_water_updater = get_node("/root/Main/Game/Water")
 
 
-# Actually, we only want this to be called from clients to the server! Not any peer!
-# But that specification doesn't exist in the API.
 @rpc("any_peer", "call_remote", "reliable", 0)
 func receive_place_single_block(pos: Vector3, look_dir: Vector3, block_id: int):
+	var mp := get_tree().get_multiplayer()
+	if mp == null or not mp.is_server():
+		return
+	var sender := mp.get_remote_sender_id()
+	if sender <= 0:
+		return
+	var expected_peer := int(str(get_parent().name))
+	if sender != expected_peer:
+		return
 	if block_id != Blocks.AIR_ID and pos.y >= BUILD_HEIGHT_LIMIT:
 		return
 	var sender_player := _get_sender_player()
 	if _intersects_any_player(pos, sender_player):
 		return
-	InteractionCommon.place_single_block(_terrain_tool, pos, look_dir, block_id, _block_types, 
-		_water_updater)
+	_receive_place_single_block_authoritative(pos, look_dir, block_id, sender)
+
+
+func _receive_place_single_block_authoritative(
+		pos: Vector3, look_dir: Vector3, block_id: int, sender_peer_id: int) -> void:
+	_receive_place_single_block_async(pos, look_dir, block_id, sender_peer_id)
+
+
+func _receive_place_single_block_async(
+		pos: Vector3, look_dir: Vector3, block_id: int, sender_peer_id: int) -> void:
+	var game := _terrain.get_parent() as BlockyVoxelGame
+	var area := InteractionCommon.edit_aabb_for_single_block(pos)
+	if game != null:
+		if not await game.ensure_voxel_area_editable_for_edit(_terrain_tool, area, sender_peer_id):
+			return
+	InteractionCommon.place_single_block(_terrain_tool, pos, look_dir, block_id, _block_types,
+		_water_updater, game)
 
 
 func _get_sender_player() -> Node3D:
@@ -72,10 +94,7 @@ func _intersects_any_player(pos: Vector3, ignore_player: Node3D) -> bool:
 				continue
 		if placed_top_y <= p.y + PLAYER_UNDERPLACE_MAX_Y_OFFSET:
 			continue
-		var player_aabb := AABB(
-			p + Vector3(-0.4, -0.9, -0.4),
-			Vector3(0.8, 1.8, 0.8)
-		)
+		var player_aabb := InteractionCommon.player_mover_aabb_at(p)
 		if player_aabb.intersects(placed_aabb):
 			return true
 	return false

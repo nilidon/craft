@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dk46tnshcae6y"]
 
-[ext_resource type="PackedScene" uid="uid://bm2v4asqyh6a" path="res://blocky_game/player/character_visual.tscn" id="1_js55o"]
+[ext_resource type="PackedScene" uid="uid://d8k2m0voxch4rv1" path="res://blocky_game/player/character_visual_vox.tscn" id="1_js55o"]
 [ext_resource type="Script" path="res://blocky_game/player/remote_character.gd" id="1_ysitv"]
 [ext_resource type="Script" path="res://blocky_game/player/remote_interaction.gd" id="3_v4bpm"]
 
@@ -8,6 +8,7 @@
 script = ExtResource("1_ysitv")
 
 [node name="CharacterVisual" parent="." instance=ExtResource("1_js55o")]
+skin_vox_path = "res://blocky_game/skins/Char000.vox"
 
 [node name="Interaction" type="Node" parent="."]
 script = ExtResource("3_v4bpm")

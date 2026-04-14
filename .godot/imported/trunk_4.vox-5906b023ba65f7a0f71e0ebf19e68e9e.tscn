@@ -4,7 +4,7 @@
 
 [node name="trunk_4" type="Node3D"]
 
-[node name="@MeshInstance3D@25342" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23934" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, -31)
 gi_mode = 2
 mesh = ExtResource("1_onrs6")

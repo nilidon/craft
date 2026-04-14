@@ -4,7 +4,7 @@ signal changed
 
 const BAG_COLUMNS = 6
 const BAG_SLOT_COUNT = 96
-const HOTBAR_SLOT_COUNT = 8
+const HOTBAR_SLOT_COUNT = 6
 const BAG_SLOT_SIZE = Vector2(64, 64)
 const HOTBAR_SLOT_SIZE = Vector2(60, 60)
 const PANEL_MAX_WIDTH := 620.0
@@ -46,6 +46,7 @@ func _ready():
 	_bag_scroll.resized.connect(_refresh_bag_grid_layout)
 	_close_button.pressed.connect(_close_inventory)
 	get_viewport().size_changed.connect(_on_viewport_resized)
+	_apply_safe_root_margins()
 	_style_scrollbar()
 	_ensure_slot_views(_bag_container, BAG_SLOT_COUNT, BAG_SLOT_SIZE)
 	_ensure_slot_views(_hotbar_container, HOTBAR_SLOT_COUNT, HOTBAR_SLOT_SIZE)
@@ -55,14 +56,12 @@ func _ready():
 	
 	# Initial contents
 	var hotbar_begin_index := BAG_SLOT_COUNT
-	_slots[hotbar_begin_index + 0] = _make_item(InventoryItem.TYPE_BLOCK, 1)
-	_slots[hotbar_begin_index + 1] = _make_item(InventoryItem.TYPE_BLOCK, 2)
-	_slots[hotbar_begin_index + 2] = _make_item(InventoryItem.TYPE_BLOCK, 3)
-	_slots[hotbar_begin_index + 3] = _make_item(InventoryItem.TYPE_BLOCK, 4)
-	_slots[hotbar_begin_index + 4] = _make_item(InventoryItem.TYPE_BLOCK, 5)
-	_slots[hotbar_begin_index + 5] = _make_item(InventoryItem.TYPE_BLOCK, 6)
-	_slots[hotbar_begin_index + 6] = _make_item(InventoryItem.TYPE_BLOCK, 7)
-	_slots[hotbar_begin_index + 7] = _make_item(InventoryItem.TYPE_ITEM, 0)
+	_slots[hotbar_begin_index + 0] = _make_item(InventoryItem.TYPE_BLOCK, 1) # dirt
+	_slots[hotbar_begin_index + 1] = _make_item(InventoryItem.TYPE_BLOCK, 2) # grass
+	_slots[hotbar_begin_index + 2] = _make_item(InventoryItem.TYPE_BLOCK, 3) # log
+	_slots[hotbar_begin_index + 3] = _make_item(InventoryItem.TYPE_BLOCK, 4) # planks
+	_slots[hotbar_begin_index + 4] = _make_item(InventoryItem.TYPE_BLOCK, 7) # clear_glass
+	_slots[hotbar_begin_index + 5] = _make_item(InventoryItem.TYPE_ITEM, 0) # rocket launcher
 	# Organized builder inventory (base + shape variants grouped together)
 	_category_slot_sets[CATEGORY_BLOCKS][0] = _make_item(InventoryItem.TYPE_BLOCK, 27) # stone_bricks_stairs
 	_category_slot_sets[CATEGORY_BLOCKS][1] = _make_item(InventoryItem.TYPE_BLOCK, 28) # stone_bricks_slab
@@ -91,6 +90,11 @@ func _ready():
 	_category_slot_sets[CATEGORY_BLOCKS][24] = _make_item(InventoryItem.TYPE_BLOCK, 10) # leaves
 	_category_slot_sets[CATEGORY_BLOCKS][25] = _make_item(InventoryItem.TYPE_BLOCK, 25) # blue_block
 	_category_slot_sets[CATEGORY_BLOCKS][26] = _make_item(InventoryItem.TYPE_BLOCK, 26) # red_block
+	# clear_glass used to be on hotbar slot 6; keep it available in the Blocks tab
+	for i in BAG_SLOT_COUNT:
+		if _category_slot_sets[CATEGORY_BLOCKS][i] == null:
+			_category_slot_sets[CATEGORY_BLOCKS][i] = _make_item(InventoryItem.TYPE_BLOCK, 7)
+			break
 	_sync_decoration_blocks_to_decorations_tab()
 	_refresh_item_category_map_from_category(CATEGORY_BLOCKS)
 	_refresh_item_category_map_from_category(CATEGORY_DECORATIONS)
@@ -134,16 +138,36 @@ func get_hotbar_slot_count() -> int:
 	return HOTBAR_SLOT_COUNT
 
 
-func get_hotbar_slot_data(i) -> InventoryItem:
-	var hotbar_begin_index := BAG_SLOT_COUNT
-	return _slots[hotbar_begin_index + i]
+func get_hotbar_slot_data(i: int) -> Variant:
+	var hotbar_begin_index: int = BAG_SLOT_COUNT
+	var idx: int = hotbar_begin_index + i
+	if idx < 0 or idx >= _slots.size():
+		return null
+	return _slots[idx]
+
+
+func toggle_open() -> void:
+	var opening := not visible
+	if opening:
+		GameAudio.play_inventory_open()
+	else:
+		GameAudio.play_inventory_close()
+	visible = not visible
+	if opening:
+		_play_inventory_bag_press_feedback()
+
+
+func _play_inventory_bag_press_feedback() -> void:
+	var hud := get_node_or_null("../PauseOpenHud")
+	if hud != null and hud.has_method("play_inventory_open_press_feedback"):
+		hud.play_inventory_open_press_feedback()
 
 
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_E:
-				visible = not visible
+				toggle_open()
 			elif visible and event.keycode == KEY_ESCAPE:
 				_close_inventory()
 				get_viewport().set_input_as_handled()
@@ -176,8 +200,12 @@ func _notification(what: int):
 
 
 func _on_slot_pressed(idx: int):
-	# Keep the rocket launcher permanently pinned in its hotbar slot.
+	# Pinned hotbar slot: rocket launcher (no drag / no drop).
 	if _is_locked_hotbar_slot(idx):
+		if _dragged_slot != -1:
+			_slot_views[_dragged_slot].get_display().set_item(_slots[_dragged_slot])
+			_dragged_item_view.stop()
+			_dragged_slot = -1
 		_show_item_name(_slots[idx])
 		return
 	if _dragged_slot != -1 and _is_locked_hotbar_slot(_dragged_slot):
@@ -188,6 +216,7 @@ func _on_slot_pressed(idx: int):
 	if _dragged_slot == -1:
 		if _slots[idx] == null:
 			return
+		GameAudio.play_hotbar_slot_change()
 		_show_item_name(_slots[idx])
 		if idx < BAG_SLOT_COUNT:
 			_set_item_category(_slots[idx], _active_tab)
@@ -286,11 +315,12 @@ func _on_slot_pressed(idx: int):
 
 
 func _is_locked_hotbar_slot(idx: int) -> bool:
-	var locked_idx := BAG_SLOT_COUNT + HOTBAR_SLOT_COUNT - 1
-	if idx != locked_idx:
-		return false
-	var item: InventoryItem = _slots[idx]
-	return item != null and item.type == InventoryItem.TYPE_ITEM and item.id == 0
+	var hb := BAG_SLOT_COUNT
+	var rocket_idx := hb + HOTBAR_SLOT_COUNT - 1
+	if idx == rocket_idx:
+		var item: InventoryItem = _slots[idx]
+		return item != null and item.type == InventoryItem.TYPE_ITEM and item.id == 0
+	return false
 
 
 func _ensure_slot_views(container: Control, count: int, slot_size: Vector2) -> void:
@@ -323,6 +353,8 @@ func _connect_tabs() -> void:
 
 
 func _on_tab_pressed(idx: int) -> void:
+	if idx != _active_tab:
+		GameAudio.play_hotbar_slot_change()
 	_set_active_tab(idx, true)
 
 
@@ -583,11 +615,26 @@ func _show_item_name(item: InventoryItem) -> void:
 	_item_name_label.text = ""
 
 
+func _apply_safe_root_margins() -> void:
+	var ins := UiSafeMargins.insets_for_viewport(get_viewport())
+	offset_left = float(ins.x)
+	offset_top = float(ins.y)
+	offset_right = -float(ins.z)
+	offset_bottom = -float(ins.w)
+
+
 func _on_viewport_resized() -> void:
+	_apply_safe_root_margins()
 	if visible:
 		_clamp_panel_size()
 		_refresh_bag_grid_layout()
 
 
+func close_if_open() -> void:
+	_close_inventory()
+
+
 func _close_inventory() -> void:
+	if visible:
+		GameAudio.play_inventory_close()
 	visible = false

@@ -114,6 +114,7 @@ func _init():
 	})
 	_create_block({
 		"name": "water",
+		"directory": "water_v2",
 		"gui_model": "water_full.obj",
 		"rotation_type": ROTATION_TYPE_NONE,
 		"voxels": ["water_full", "water_top"],
@@ -145,8 +146,10 @@ func _init():
 	})
 	_create_block({
 		"name": "dead_shrub",
+		"display_name": "Dead shrub",
 		"gui_model": "dead_shrub.obj",
 		"rotation_type": ROTATION_TYPE_NONE,
+		"category": "decorations",
 		"voxels": ["dead_shrub"],
 		"transparent": true,
 		"backface_culling": false

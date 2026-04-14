@@ -4,7 +4,7 @@
 
 [node name="prop_couch" type="Node3D"]
 
-[node name="@MeshInstance3D@24144" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23974" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -16)
 gi_mode = 2
 mesh = ExtResource("1_s5l23")

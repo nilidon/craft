@@ -62,8 +62,8 @@ func receive_explode(pos: Vector3):
 
 
 func _create_explosion_vfx(explosion_pos: Vector3):
+	GameAudio.play_explosion_at_world(explosion_pos)
 	# VFX are not created as children of the rocket because it gets destroyed shortly after.
-	
 	var explosion = ExplosionScene.instantiate()
 	explosion.position = explosion_pos
 	get_parent().add_child(explosion)

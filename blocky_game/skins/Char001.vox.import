@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxSceneImporter"
+type="PackedScene"
+uid="uid://dfsve4px4jrin"
+path="res://.godot/imported/Char001.vox-d3703296ea6bbad870019ae6da247003.tscn"
+
+[deps]
+
+source_file="res://blocky_game/skins/Char001.vox"
+dest_files=["res://.godot/imported/Char001.vox-d3703296ea6bbad870019ae6da247003.tscn"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+enable_baked_lighting=true

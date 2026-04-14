@@ -4,7 +4,7 @@
 
 [node name="prop_chest_mysterious_dark" type="Node3D"]
 
-[node name="@MeshInstance3D@26066" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23948" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -9)
 gi_mode = 2
 mesh = ExtResource("1_orapy")

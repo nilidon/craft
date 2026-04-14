@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d8k2m0voxch4rv1"]
+
+[ext_resource type="Script" path="res://blocky_game/player/character_visual_vox.gd" id="1_visual"]
+
+[node name="CharacterVisual" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_visual")
+yaw_offset_radians = 1.57079633
+
+[node name="SkinRoot" type="Node3D" parent="."]

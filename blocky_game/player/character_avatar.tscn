@@ -1,13 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://ojfpybxqac1f"]
+[gd_scene load_steps=14 format=3 uid="uid://ojfpybxqac1f"]
 
-[ext_resource type="Script" path="res://blocky_game/player/character_controller.gd" id="1"]
-[ext_resource type="Script" path="res://blocky_game/player/avatar_camera.gd" id="2"]
-[ext_resource type="Script" path="res://blocky_game/player/avatar_interaction.gd" id="3"]
+[ext_resource type="Script" uid="uid://mt4wx4ajlty0" path="res://blocky_game/player/character_controller.gd" id="1"]
+[ext_resource type="Script" uid="uid://53thcfe1tap6" path="res://blocky_game/player/avatar_camera.gd" id="2"]
+[ext_resource type="Script" uid="uid://d4da6qkj8cpe4" path="res://blocky_game/player/avatar_interaction.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://c0wr4bmx2e43l" path="res://blocky_terrain/crosshair.png" id="4"]
-[ext_resource type="Script" path="res://blocky_terrain/center.gd" id="5"]
+[ext_resource type="Script" uid="uid://cyeuoaff8phm" path="res://blocky_game/player/crosshair_sprite.gd" id="5"]
 [ext_resource type="PackedScene" path="res://blocky_game/gui/hotbar/hotbar.tscn" id="6"]
-[ext_resource type="PackedScene" uid="uid://bm2v4asqyh6a" path="res://blocky_game/player/character_visual.tscn" id="6_peahy"]
+[ext_resource type="PackedScene" uid="uid://br6dwi4kfh841" path="res://blocky_game/player/character_visual_vox.tscn" id="6_peahy"]
 [ext_resource type="PackedScene" uid="uid://cg54toj1o7c2u" path="res://blocky_game/gui/inventory/inventory.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bkpausemenu01" path="res://blocky_game/gui/pause_menu.tscn" id="8_pause"]
+[ext_resource type="Texture2D" uid="uid://bh6qxacsv54ro" path="res://blocky_game/buttons/pause icon.png" id="9_pauseico"]
+[ext_resource type="Script" uid="uid://04vcqn24wpbx" path="res://blocky_game/gui/pause_open_hud.gd" id="10_pausehud"]
+[ext_resource type="Texture2D" uid="uid://dsewpgyu7tqux" path="res://blocky_game/buttons/inventory.png" id="11_invico"]
+[ext_resource type="PackedScene" uid="uid://b8m0b1lehud01" path="res://blocky_game/gui/mobile/mobile_game_hud.tscn" id="12_mobile_hud"]
 
 [node name="CharacterAvatar" type="Node3D"]
 script = ExtResource("1")
@@ -18,7 +23,6 @@ head = NodePath("Camera")
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.702764, 0)
-current = false
 fov = 90.0
 near = 0.1
 far = 500.0
@@ -56,10 +60,62 @@ texture = ExtResource("4")
 [node name="HotBar" parent="." instance=ExtResource("6")]
 anchors_preset = 12
 
+[node name="MobileGameHud" parent="." instance=ExtResource("12_mobile_hud")]
+preview_on_desktop = true
+
 [node name="Inventory" parent="." instance=ExtResource("7")]
-visible = false
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseOpenHud" type="CanvasLayer" parent="."]
+layer = 100
+script = ExtResource("10_pausehud")
+
+[node name="Root" type="Control" parent="PauseOpenHud"]
+layout_mode = 3
 anchors_preset = 15
-color = Color(0, 0, 0, 0.501961)
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InventoryOpenButton" type="TextureButton" parent="PauseOpenHud/Root"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 224.0
+offset_top = -97.0
+offset_right = 336.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_invico")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="PauseOpenButton" type="TextureButton" parent="PauseOpenHud/Root"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 56.0
+grow_horizontal = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_pauseico")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_pause")]
 
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
 

@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqj7k2m8xcsel"]
+
+[ext_resource type="Script" path="res://blocky_game/ui/character_select/character_select_slot.gd" id="1_slot"]
+[ext_resource type="StyleBoxFlat" path="res://blocky_game/ui/character_select/character_select_slot_frame.tres" id="2_frame"]
+
+[sub_resource type="StyleBoxFlat" id="NamePlateStyle"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.17, 0.2, 0.96)
+border_width_top = 1
+border_color = Color(0.45, 0.48, 0.55, 0.65)
+
+[sub_resource type="StyleBoxFlat" id="SelectBtnStyle"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.74, 0.12, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.55, 0.95, 0.35, 0.55)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="CharacterSelectSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(220, 320)
+theme_override_styles/panel = ExtResource("2_frame")
+script = ExtResource("1_slot")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Margin/VBox"]
+custom_minimum_size = Vector2(200, 240)
+layout_mode = 2
+size_flags_horizontal = 4
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Margin/VBox/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(200, 240)
+render_target_update_mode = 2
+transparent_bg = false
+
+[node name="Camera3D" type="Camera3D" parent="Margin/VBox/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.990268, 0.139173, 0, -0.139173, 0.990268, 0, 0.28, 1.55)
+fov = 36.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Margin/VBox/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0.6, 0.9, 0.8)
+light_energy = 1.15
+shadow_enabled = false
+
+[node name="FillLight" type="DirectionalLight3D" parent="Margin/VBox/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.8, 0.4, 0.6)
+light_color = Color(0.75, 0.82, 0.98, 1)
+light_energy = 0.35
+shadow_enabled = false
+
+[node name="ModelRoot" type="Node3D" parent="Margin/VBox/SubViewportContainer/SubViewport"]
+
+[node name="NamePlate" type="PanelContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("NamePlateStyle")
+
+[node name="MarginName" type="MarginContainer" parent="Margin/VBox/NamePlate"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="NameLabel" type="Label" parent="Margin/VBox/NamePlate/MarginName"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.97, 1, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+text = "NAME"
+
+[node name="SelectButton" type="Button" parent="Margin/VBox"]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.9, 0.95, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SelectBtnStyle")
+theme_override_styles/hover = SubResource("SelectBtnStyle")
+theme_override_styles/pressed = SubResource("SelectBtnStyle")
+text = "SELECT"

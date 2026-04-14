@@ -4,6 +4,6 @@
 
 [node name="fence_corner" type="Node3D"]
 
-[node name="@MeshInstance3D@26008" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23954" type="MeshInstance3D" parent="."]
 gi_mode = 2
 mesh = ExtResource("1_xp6tf")

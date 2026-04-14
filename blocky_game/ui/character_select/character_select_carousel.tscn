@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8k2n7xqh4mwp"]
+
+[ext_resource type="Script" path="res://blocky_game/ui/character_select/character_select_carousel.gd" id="1_carousel"]
+
+[node name="CharacterSelectCarousel" type="Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_carousel")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="TitleBlock" type="VBoxContainer" parent="VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 14
+
+[node name="TitleLabel" type="Label" parent="VBox/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 65
+theme_override_constants/outline_size = 6
+theme_override_colors/font_outline_color = Color(0.04, 0.05, 0.08, 1)
+horizontal_alignment = 1
+text = "SKINS"
+
+[node name="SubtitleLabel" type="Label" parent="VBox/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99, 0.99, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.12, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Choose your character."
+
+[node name="CarouselRow" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 10
+size_flags_vertical = 3
+
+[node name="ArrowPrev" type="Button" parent="VBox/CarouselRow"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "◀"
+
+[node name="SwipeArea" type="Control" parent="VBox/CarouselRow"]
+layout_mode = 2
+size_flags_vertical = 3
+clip_contents = true
+
+[node name="ArrowNext" type="Button" parent="VBox/CarouselRow"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "▶"
+
+[node name="StripColumn" type="VBoxContainer" parent="VBox/CarouselRow/SwipeArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSpacerTop" type="Control" parent="VBox/CarouselRow/SwipeArea/StripColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardRow" type="HBoxContainer" parent="VBox/CarouselRow/SwipeArea/StripColumn"]
+layout_mode = 2
+theme_override_constants/separation = 48
+size_flags_horizontal = 4
+
+[node name="VSpacerBottom" type="Control" parent="VBox/CarouselRow/SwipeArea/StripColumn"]
+layout_mode = 2
+size_flags_vertical = 3

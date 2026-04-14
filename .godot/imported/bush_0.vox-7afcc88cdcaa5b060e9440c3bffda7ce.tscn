@@ -4,7 +4,7 @@
 
 [node name="bush_0" type="Node3D"]
 
-[node name="@MeshInstance3D@25370" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23978" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11)
 gi_mode = 2
 mesh = ExtResource("1_y1sdy")

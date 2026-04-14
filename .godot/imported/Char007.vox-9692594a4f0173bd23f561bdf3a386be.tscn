@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/Char007.vox-9692594a4f0173bd23f561bdf3a386be.model0.mesh" id="1_fsac4"]
+
+[node name="Char007" type="Node3D"]
+
+[node name="@MeshInstance3D@26781" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("1_fsac4")

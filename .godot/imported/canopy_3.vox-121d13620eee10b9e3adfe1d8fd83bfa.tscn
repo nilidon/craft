@@ -4,7 +4,7 @@
 
 [node name="canopy_3" type="Node3D"]
 
-[node name="@MeshInstance3D@25368" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23893" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, -51)
 gi_mode = 2
 mesh = ExtResource("1_k1g0n")

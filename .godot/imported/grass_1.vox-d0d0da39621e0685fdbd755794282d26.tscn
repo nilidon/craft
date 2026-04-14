@@ -4,7 +4,7 @@
 
 [node name="grass_1" type="Node3D"]
 
-[node name="@MeshInstance3D@25364" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23907" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
 gi_mode = 2
 mesh = ExtResource("1_7cudi")

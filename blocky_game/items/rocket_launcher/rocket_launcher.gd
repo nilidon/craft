@@ -31,6 +31,7 @@ func _spawn_rocket(id: int, pos: Vector3, dir: Vector3):
 	rocket.name = str("Rocket", id)
 	_world.add_child(rocket)
 	print("Launch rocket at ", rocket.position)
+	GameAudio.play_rocket_launch()
 	rocket.set_direction(dir)
 	
 	var mp := get_tree().get_multiplayer()
@@ -41,6 +42,11 @@ func _spawn_rocket(id: int, pos: Vector3, dir: Vector3):
 
 @rpc("any_peer", "call_remote", "reliable", 0)
 func receive_use(trans: Transform3D):
+	var mp := get_tree().get_multiplayer()
+	if mp == null or not mp.is_server():
+		return
+	if mp.get_remote_sender_id() <= 0:
+		return
 	_use(trans)
 
 

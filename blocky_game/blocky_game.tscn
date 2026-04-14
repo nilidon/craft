@@ -29,7 +29,7 @@ fog_enabled = false
 fog_aerial_perspective = 0.0
 
 [sub_resource type="VoxelStreamRegionFiles" id="3"]
-directory = "user://voxel_worlds/grassland_v4_clean"
+directory = "user://voxel_worlds/World_1"
 
 [node name="Game" type="Node"]
 script = ExtResource("5")

@@ -1,4 +1,4 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=318 format=3 uid="uid://ctn2wqssoxvj5"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=320 format=3 uid="uid://ctn2wqssoxvj5"]
 
 [ext_resource type="ArrayMesh" uid="uid://rq0nk6t5jqyc" path="res://blocky_game/blocks/grass/grass.obj" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://dmi1fa4udxhx3" path="res://blocky_game/blocks/dirt/dirt.obj" id="2"]
@@ -14,7 +14,8 @@
 [ext_resource type="ArrayMesh" uid="uid://b3t5agd28fn0v" path="res://blocky_game/blocks/stairs/stairs_pz.obj" id="10"]
 [ext_resource type="ArrayMesh" uid="uid://c2hopote1vb14" path="res://blocky_game/blocks/stairs/stairs_nz.obj" id="11"]
 [ext_resource type="ArrayMesh" uid="uid://fv8g4jnjcj3d" path="res://blocky_game/blocks/glass_v2/glass.obj" id="12"]
-[ext_resource type="ArrayMesh" uid="uid://31q4wrlmcpbj" path="res://blocky_game/blocks/water/water_full.obj" id="13"]
+[ext_resource type="ArrayMesh" uid="uid://10yiyfywxfab" path="res://blocky_game/blocks/water_v2/water_full.obj" id="13"]
+[ext_resource type="ArrayMesh" uid="uid://dqwtwrlemnmrg" path="res://blocky_game/blocks/water_v2/water_top.obj" id="14"]
 [ext_resource type="ArrayMesh" uid="uid://c3gahur20k4ev" path="res://blocky_game/blocks/rail/rail_slope_nz.obj" id="15"]
 [ext_resource type="ArrayMesh" uid="uid://csgscqf8ymc12" path="res://blocky_game/blocks/rail/rail_slope_px.obj" id="16"]
 [ext_resource type="ArrayMesh" uid="uid://bonu5trc4yi21" path="res://blocky_game/blocks/rail/rail_slope_pz.obj" id="17"]
@@ -144,6 +145,7 @@
 [ext_resource type="ArrayMesh" uid="uid://4hda1ctvn7rk" path="res://blocky_game/blocks/prop_wardrobe_light_brown/prop_wardrobe_light_brown_nz.obj" id="furn_prop_wardrobe_light_brown_nz_mesh"]
 [ext_resource type="ArrayMesh" uid="uid://dtsmelnm0artr" path="res://blocky_game/blocks/prop_wardrobe_light_brown/prop_wardrobe_light_brown_px.obj" id="furn_prop_wardrobe_light_brown_px_mesh"]
 [ext_resource type="ArrayMesh" uid="uid://drvxsu757vf3" path="res://blocky_game/blocks/prop_wardrobe_light_brown/prop_wardrobe_light_brown_pz.obj" id="furn_prop_wardrobe_light_brown_pz_mesh"]
+[ext_resource type="Material" uid="uid://7cltvjai58gy" path="res://blocky_game/blocks/material_dead_shrub.tres" id="mat_dead_shrub"]
 [ext_resource type="ArrayMesh" uid="uid://b7e7a104a3y2h" path="res://blocky_game/blocks/nat_canopy_round/nat_canopy_round.obj" id="nat_canopy_round_mesh"]
 [ext_resource type="ArrayMesh" uid="uid://cmmak21cnja4b" path="res://blocky_game/blocks/nat_canopy_tall/nat_canopy_tall.obj" id="nat_canopy_tall_mesh"]
 [ext_resource type="ArrayMesh" uid="uid://dyfq6ghu8n4aq" path="res://blocky_game/blocks/nat_canopy_wide/nat_canopy_wide.obj" id="nat_canopy_wide_mesh"]
@@ -259,16 +261,18 @@ mesh = ExtResource("12")
 resource_name = "water_top"
 transparency_index = 1
 collision_aabbs = Array[AABB]([AABB(0, 0, 0, 1, 1, 1)])
+collision_mask = 2
 material_override_0 = ExtResource("61_wmat")
-collision_enabled_0 = true
-mesh = ExtResource("13")
+collision_enabled_0 = false
+mesh = ExtResource("14")
 
 [sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_rydis"]
 resource_name = "water_full"
 transparency_index = 1
 collision_aabbs = Array[AABB]([AABB(0, 0, 0, 1, 1, 1)])
+collision_mask = 2
 material_override_0 = ExtResource("61_wmat")
-collision_enabled_0 = true
+collision_enabled_0 = false
 mesh = ExtResource("13")
 
 [sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_k70eq"]
@@ -371,9 +375,10 @@ mesh = ExtResource("25")
 
 [sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_kcviq"]
 resource_name = "dead_shrub"
+transparency_index = 1
 collision_aabbs = Array[AABB]([AABB(0.1, 0, 0.1, 0.8, 0.8, 0.8)])
 collision_mask = 2
-material_override_0 = ExtResource("6_7k7uf")
+material_override_0 = ExtResource("mat_dead_shrub")
 collision_enabled_0 = true
 mesh = ExtResource("26")
 

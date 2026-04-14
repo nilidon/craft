@@ -4,7 +4,7 @@
 
 [node name="rock_1" type="Node3D"]
 
-[node name="@MeshInstance3D@25328" type="MeshInstance3D" parent="."]
+[node name="@MeshInstance3D@23913" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -15)
 gi_mode = 2
 mesh = ExtResource("1_cgdv7")
