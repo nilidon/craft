@@ -23,7 +23,6 @@ func _ready() -> void:
 	var vp := get_viewport()
 	if vp != null:
 		vp.gui_disable_input = false
-	call_deferred("_apply_mobile_root_window_gui_scale")
 	PlayerSettings.apply_master_linear(PlayerSettings.get_master_linear())
 	_menu_coins_hud = CoinsHudScript.new()
 	_menu_coins_hud.name = "MenuCoinsHud"
@@ -33,20 +32,6 @@ func _ready() -> void:
 	_menu_coins_hud.layer = 24
 	if _main_menu != null and _main_menu.has_method(&"set_menu_coins_hud"):
 		_main_menu.set_menu_coins_hud(_menu_coins_hud)
-
-
-func _apply_mobile_root_window_gui_scale() -> void:
-	if Engine.is_editor_hint():
-		return
-	var n := OS.get_name()
-	if n != &"Android" and n != &"iOS":
-		return
-	var w := get_window()
-	if w == null:
-		return
-	w.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
-	w.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
-	w.content_scale_size = Vector2i(1920, 1080)
 
 
 func _pause_menu_would_freeze_tree() -> bool:

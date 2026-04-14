@@ -103,7 +103,7 @@ res://blocky_game/items/rocket_launcher/rocket.tscn::324c1897bd50362d53ddfcadf9a
 res://blocky_game/items/rocket_launcher/rocket_explosion.tscn::044a163cf228928411206256c2488033::1773701276::res://.godot/exported/133200997/export-22ed33d2b31eb81ec6af81334b496bbf-rocket_explosion.scn
 res://blocky_game/items/rocket_launcher/rocket_launcher.tscn::c876ebb2327b1fe77774500b2eecf334::1773701276::res://.godot/exported/133200997/export-4c57de66daf17de9aa612ff6cfc5d00b-rocket_launcher.scn
 res://blocky_game/items/rocket_launcher/rocket_launcher_mat.tres::bf3e4cf1f6df63d1a32ad6bc8809745b::1773701276::res://.godot/exported/133200997/export-497253c3ff0a34efbaf189ff6bceec9d-rocket_launcher_mat.res
-res://blocky_game/player/character_avatar.tscn::bfd68812623ae3eae58e2f581afba8bc::1776119683::res://.godot/exported/133200997/export-54c608c16ddb4cdfcee8e6b26b87d7d9-character_avatar.scn
+res://blocky_game/player/character_avatar.tscn::bfd68812623ae3eae58e2f581afba8bc::1776140446::res://.godot/exported/133200997/export-54c608c16ddb4cdfcee8e6b26b87d7d9-character_avatar.scn
 res://blocky_game/player/character_visual.tscn::bd0d215355f39b9a5a70749dead68835::1775204600::res://.godot/exported/133200997/export-53821918453a7048db66ed6c11c801ec-character_visual.scn
 res://blocky_game/player/character_visual_vox.tscn::5bb87c4ed6592f3d2e01982fbaadcb5d::1775204660::res://.godot/exported/133200997/export-a6f948bf151faa9e8f51d5cc815f8351-character_visual_vox.scn
 res://blocky_game/player/remote_character.tscn::4917b060d9d2625b4fe60f5cd60a7905::1775204656::res://.godot/exported/133200997/export-a3b1d088fcf2994261ace60253cb6cd9-remote_character.scn
@@ -126,7 +126,7 @@ res://blocky_game/ui/character_select/skin_card_3d_preview.tscn::1076613a1f53d80
 res://blocky_game/ui/theme_global.tres::e0921a705967afe2ee40ee46c59fb439::1774851132::res://.godot/exported/133200997/export-ff7f49c9db32b883c27dfcd7b89c0204-theme_global.res
 res://blocky_game/blocky_game.tscn::a37a851a68f11e36a71a927bcd734e95::1774774546::res://.godot/exported/133200997/export-35176eddf3fc79029dd9e70d09b148f9-blocky_game.scn
 res://blocky_game/dedicated_server_main.tscn::59c4caa6de25dcb6afcc46d8cb7fc34f::1774852260::res://.godot/exported/133200997/export-6c37c4306ef3171916184b0965c5586a-dedicated_server_main.scn
-res://blocky_game/main.tscn::6adbab9f308d20a16a5f337373778002::1776119683::res://.godot/exported/133200997/export-e829fba473a1c2863b7924c929d641ce-main.scn
+res://blocky_game/main.tscn::e249018a4c44f9f043d7c80f4476a444::1776140446::res://.godot/exported/133200997/export-e829fba473a1c2863b7924c929d641ce-main.scn
 res://blocky_terrain/character_avatar.tscn::c9355f7a45f2f2168038aa681d96fabb::1773701276::res://.godot/exported/133200997/export-bfc1fa4463dc92e1364ed49a96d451eb-character_avatar.scn
 res://blocky_terrain/generator_waves_blocky.tres::43574fd3244d3c09136da4792b864236::1773701276::res://.godot/exported/133200997/export-9c995ffd0c83d3b9e90936526db7ad66-generator_waves_blocky.res
 res://blocky_terrain/main.tscn::3133540b99bc37f78c9f6395434f4802::1773701276::res://.godot/exported/133200997/export-3e584afff8dbc51086b5f7cba2f137b3-main.scn

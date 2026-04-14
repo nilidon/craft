@@ -216,9 +216,6 @@ func _wire_one_shot_button_audio(b: BaseButton) -> void:
 
 
 func _ready() -> void:
-	## Runs before [Main]’s _ready (children first). Parent may be an unsized [Control] or a plain [Node] —
-	## establish a real rect immediately so the first touch frame can hit-test buttons.
-	_ensure_main_menu_fills_viewport()
 	get_viewport().size_changed.connect(_refit_main_menu_layout)
 	_setup_delete_world_dialog()
 	PlayerSettings.repair_skin_path_if_locked_in_file()
@@ -249,40 +246,7 @@ func _ready() -> void:
 	call_deferred("_refit_main_menu_layout")
 
 
-func _ensure_main_menu_fills_viewport() -> void:
-	## [Main] used to be a plain [Node], so full-rect anchors had no layout parent (≈0 hit area on device).
-	## [Main] is now a full-viewport [Control], but this still runs before [Main] may have a non-zero size
-	## (child _ready runs first). When the parent has no usable rect yet, map the visible viewport into
-	## parent space explicitly.
-	var vp := get_viewport()
-	if vp == null:
-		return
-	var r: Rect2 = vp.get_visible_rect()
-	var p := get_parent()
-	if p is Control:
-		var pc := p as Control
-		if pc.size.x >= 1.0 and pc.size.y >= 1.0:
-			set_anchors_preset(Control.PRESET_FULL_RECT)
-			offset_left = 0.0
-			offset_top = 0.0
-			offset_right = 0.0
-			offset_bottom = 0.0
-			return
-	var origin := r.position
-	if p is Control:
-		origin = r.position - (p as Control).global_position
-	anchor_left = 0.0
-	anchor_top = 0.0
-	anchor_right = 0.0
-	anchor_bottom = 0.0
-	offset_left = origin.x
-	offset_top = origin.y
-	offset_right = origin.x + r.size.x
-	offset_bottom = origin.y + r.size.y
-
-
 func _refit_main_menu_layout() -> void:
-	_ensure_main_menu_fills_viewport()
 	var vis := get_viewport().get_visible_rect().size
 	var vw := vis.x
 	var vh := vis.y
